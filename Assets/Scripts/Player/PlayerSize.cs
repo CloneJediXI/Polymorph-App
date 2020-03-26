@@ -11,7 +11,7 @@ public class PlayerSize : MonoBehaviour
     private Behaviour halo;
     private Vector3 mousePosition;
     private LineRenderer line;
-    public float checkDistance;
+    private float checkDistance = 6;
 
     // Start is called before the first frame update
     void Start()
