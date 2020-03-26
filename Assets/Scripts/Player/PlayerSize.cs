@@ -11,6 +11,7 @@ public class PlayerSize : MonoBehaviour
     private Behaviour halo;
     private Vector3 mousePosition;
     private LineRenderer line;
+    public float checkDistance;
 
     // Start is called before the first frame update
     void Start()
@@ -68,10 +69,23 @@ public class PlayerSize : MonoBehaviour
     private void drawLine()
     {
         line.SetPosition(0, this.transform.position);
-        line.SetPosition(1, mousePosition);
+
+        Vector3 temp = mousePosition;
+        temp.z = 0;
+        //If the line is too long
+        if (temp.magnitude > checkDistance)
+        {
+            //Make the line the longest it can be
+            line.SetPosition(1, (temp.normalized * checkDistance) + transform.position);
+        }
+        else
+        {
+            line.SetPosition(1, mousePosition);
+        }
     }
     public void interactCheck()
     {
-
+        Vector3 temp = mousePosition;
+        temp.z = 0;
     }
 }
