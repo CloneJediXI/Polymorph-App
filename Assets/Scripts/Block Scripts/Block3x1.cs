@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Block2x2 : MonoBehaviour
+public class Block3x1 : MonoBehaviour
 {
     //variables for tracking block dimensions
+    private int blockWidth = 3;
     private int blockHeight = 1;
-    private int blockWidth = 2;
-
     // Start is called before the first frame update
     void Start()
     {
