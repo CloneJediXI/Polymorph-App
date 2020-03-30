@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -21,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private bool walking;
 
-    
+
 
     void Start()
     {
@@ -50,7 +48,9 @@ public class PlayerMovement : MonoBehaviour
             {
                 move(Input.GetButton("Fire3"), Input.GetAxisRaw("Horizontal"));
                 faceRight(true);
-            }else if (Input.GetAxisRaw("Horizontal") < 0.0f){
+            }
+            else if (Input.GetAxisRaw("Horizontal") < 0.0f)
+            {
                 move(Input.GetButton("Fire3"), Input.GetAxisRaw("Horizontal"));
                 faceRight(false);
             }
@@ -62,30 +62,26 @@ public class PlayerMovement : MonoBehaviour
                     walking = false;
                 }
             }
-            
+
             if (Input.GetButtonDown("Jump"))
             {
                 jump();
             }
         }
-        
+
     }
     void faceRight(bool right)
     {
-        if (right)
-        {
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        }
-        else
-        {
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x)*(-1f), transform.localScale.y, transform.localScale.z);
-        }
+        GetComponent<SpriteRenderer>().flipX = (!right);
     }
     void move(bool sprint, float axisData)
     {
-        if (sprint){
-            rb.velocity = new Vector2((speed + sprintModifier)*axisData, rb.velocity.y);
-        }else{
+        if (sprint)
+        {
+            rb.velocity = new Vector2((speed + sprintModifier) * axisData, rb.velocity.y);
+        }
+        else
+        {
             rb.velocity = new Vector2(speed * axisData, rb.velocity.y);
         }
         anim.SetBool("Walk", true);
@@ -108,13 +104,16 @@ public class PlayerMovement : MonoBehaviour
             return true;
         }
         else return false;
-        
+
     }
-    public float JumpPower{
-        get{
+    public float JumpPower
+    {
+        get
+        {
             return jumpPower;
         }
-        set{
+        set
+        {
             jumpPower = value;
         }
     }
@@ -129,5 +128,5 @@ public class PlayerMovement : MonoBehaviour
             speed = value;
         }
     }
-    
+
 }

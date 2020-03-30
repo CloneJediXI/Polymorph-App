@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerSize : MonoBehaviour
 {
@@ -13,7 +11,7 @@ public class PlayerSize : MonoBehaviour
     private LineRenderer line;
     private float checkDistance = 6f;
 
-    public bool tooLong;
+    private bool tooLong;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +24,7 @@ public class PlayerSize : MonoBehaviour
         line = GetComponent<LineRenderer>();
         line.positionCount = 2;
         line.enabled = false;
-        
+
     }
 
     // Update is called once per frame
@@ -54,7 +52,7 @@ public class PlayerSize : MonoBehaviour
             this.GetComponent<PlayerMovement>().JumpPower = initJumpPower;
             this.GetComponent<PlayerMovement>().Speed = initSpeed;
         }
-        if(Input.GetButtonDown("Fire1") && interacting)
+        if (Input.GetButtonDown("Fire1") && interacting)
         {
             interactCheck();
         }
@@ -64,9 +62,10 @@ public class PlayerSize : MonoBehaviour
     {
         transform.localScale = new Vector3(width, height, 1);
         //                   jump increases by 2 for each unit taller it is
-        this.GetComponent<PlayerMovement>().JumpPower = initJumpPower + (2*(height-1));
+        this.GetComponent<PlayerMovement>().JumpPower = initJumpPower + (2 * (height - 1));
         //                          Same with speed
         this.GetComponent<PlayerMovement>().Speed = initSpeed + (2 * (width - 1));
+
     }
     public int getWidth()
     {
@@ -75,6 +74,10 @@ public class PlayerSize : MonoBehaviour
     public int getHeight()
     {
         return Mathf.RoundToInt(transform.localScale.y);
+    }
+    public Vector3 getSize()
+    {
+        return transform.localScale;
     }
     private void drawLine()
     {
@@ -86,7 +89,7 @@ public class PlayerSize : MonoBehaviour
         if (temp.magnitude > checkDistance)
         {
             //Make the line the longest it can be
-            line.SetPosition(1, (temp.normalized * checkDistance)+ transform.position);
+            line.SetPosition(1, (temp.normalized * checkDistance) + transform.position);
             tooLong = true;
         }
         else
