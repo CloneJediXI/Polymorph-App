@@ -19,7 +19,14 @@ public class ShapeChange : MonoBehaviour
     {
 	if(Vector3.Distance(Block.transform.position, playerObj.transform.position) < range)
 	{
+	  if(Input.GetKey("e"))
+	  {		  
       active.enabled = true;
+	  }
+	  if(Input.GetKeyUp("e"))
+	  {
+		  print("TEST");
+	  }
     }
 	}
 
@@ -27,4 +34,5 @@ public class ShapeChange : MonoBehaviour
     {
       active.enabled = false;
     }
+	
 }
