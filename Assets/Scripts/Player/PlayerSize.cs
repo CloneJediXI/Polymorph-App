@@ -68,6 +68,14 @@ public class PlayerSize : MonoBehaviour
         //                          Same with speed
         this.GetComponent<PlayerMovement>().Speed = initSpeed + (2 * (width - 1));
     }
+    public int getWidth()
+    {
+        return Mathf.RoundToInt(transform.localScale.x);
+    }
+    public int getHeight()
+    {
+        return Mathf.RoundToInt(transform.localScale.y);
+    }
     private void drawLine()
     {
         line.SetPosition(0, this.transform.position);

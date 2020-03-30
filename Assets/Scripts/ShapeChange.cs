@@ -9,12 +9,18 @@ public class ShapeChange : MonoBehaviour
      public GameObject Block;
      private GameObject playerObj = null;
      public int range = 7;
-     void Start()
+    float ratioX;
+    float ratioY;
+
+    void Start()
      {
 	     active = (Behaviour)GetComponent("Halo");
 	     active.enabled = false;
 	     playerObj = GameObject.FindGameObjectWithTag("Player");
-     }
+        BlockSize temp = GetComponent<BlockSize>();
+        ratioX = transform.localScale.x / temp.width;
+        ratioY = transform.localScale.y / temp.height;
+    }
      void OnMouseOver(){
         if(Vector3.Distance(Block.transform.position, playerObj.transform.position) < range)
         {
@@ -37,8 +43,14 @@ public class ShapeChange : MonoBehaviour
     {
         if(active.enabled == true)
         {
+            PlayerSize playerSize = playerObj.GetComponent<PlayerSize>();
             BlockSize temp = GetComponent<BlockSize>();
-            playerObj.GetComponent<PlayerSize>().changeSize(temp.width, temp.height);
+            float x = playerSize.getWidth();
+            float y = playerSize.getHeight();
+            transform.localScale = new Vector3(x * ratioX, y * ratioY, transform.localScale.z);
+            playerSize.changeSize(temp.width, temp.height);
+            temp.width = (int)x;
+            temp.height = (int)y;
         }
     }
 	
