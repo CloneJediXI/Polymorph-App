@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8986302345855671503}
   - component: {fileID: 8986302345855671502}
   - component: {fileID: 8986302345855671347}
-  - component: {fileID: 8986302345855671346}
   - component: {fileID: 8986302345855671501}
   - component: {fileID: 8986302345855671500}
+  - component: {fileID: 2942935246754809135}
   m_Layer: 9
   m_Name: Block1x2 Prefab
   m_TagString: Untagged
@@ -109,18 +109,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
---- !u!114 &8986302345855671346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8986302345855671497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40e4e5eeb6d1351428ee88974155b6b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8986302345855671501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,3 +136,17 @@ Halo:
     serializedVersion: 2
     rgba: 4286611584
   m_Size: 5
+--- !u!114 &2942935246754809135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8986302345855671497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba4ee112f3c1d246b5de8837b9d5244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 1
+  height: 2
