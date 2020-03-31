@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private float jumpPower = 5;//How high you jump
     private float groundCheckDistance = .1f;//How far to check for the ground
     public LayerMask jumpCheckMask; //Set to what you want to be checked ie. the ground
-    private GameObject bottom;
+    private GameObject[] bottom;
 
     private float speed = 7f;
     private float sprintModifier = 4f;
@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         overlord = GameObject.Find("Overlord");
         state = overlord.GetComponent<GameState>();
-        bottom = GameObject.Find("Player/Bottom");
+        bottom = new GameObject[] { GameObject.Find("Player/Bottom1"), GameObject.Find("Player/Bottom2"), GameObject.Find("Player/Bottom3") };
 
         anim = GetComponent<Animator>();
     }
@@ -41,92 +41,68 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //If the game is not paused
-        if (!state.Paused)
-        {
+        if (!state.Paused){
             //Checks if moving left or right, no difference right now but might need it later
-            if (Input.GetAxisRaw("Horizontal") > 0.0f)
-            {
+            if (Input.GetAxisRaw("Horizontal") > 0.0f){
                 move(Input.GetButton("Fire3"), Input.GetAxisRaw("Horizontal"));
                 faceRight(true);
             }
-            else if (Input.GetAxisRaw("Horizontal") < 0.0f)
-            {
+            else if (Input.GetAxisRaw("Horizontal") < 0.0f){
                 move(Input.GetButton("Fire3"), Input.GetAxisRaw("Horizontal"));
                 faceRight(false);
             }
-            else
-            {
-                if (walking)
-                {
+            else{
+                if (walking){
                     anim.SetBool("Walk", false);
                     walking = false;
                 }
             }
 
-            if (Input.GetButtonDown("Jump"))
-            {
+            if (Input.GetButtonDown("Jump")){
                 jump();
             }
         }
-
     }
-    void faceRight(bool right)
-    {
+    void faceRight(bool right){
         GetComponent<SpriteRenderer>().flipX = (!right);
     }
-    void move(bool sprint, float axisData)
-    {
-        if (sprint)
-        {
+    void move(bool sprint, float axisData){
+        if (sprint){
             rb.velocity = new Vector2((speed + sprintModifier) * axisData, rb.velocity.y);
         }
-        else
-        {
+        else{
             rb.velocity = new Vector2(speed * axisData, rb.velocity.y);
         }
         anim.SetBool("Walk", true);
         walking = true;
     }
-    void jump()
-    {
-        if (jumpCounter < maxJumps)
-        {
+    void jump(){
+        if (jumpCounter < maxJumps){
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             jumpCounter++;
         }
     }
     bool grounded()
     {
-        //If you are touching the ground
-        RaycastHit2D hit = Physics2D.Raycast(bottom.transform.position, -Vector2.up, groundCheckDistance, jumpCheckMask);
-        if (hit.collider != null)
+        for (int i = 0; i < bottom.Length; i++)
         {
-            return true;
+            //If you are touching the ground
+            RaycastHit2D hit = Physics2D.Raycast(bottom[i].transform.position, -Vector2.up, groundCheckDistance, jumpCheckMask);
+            if (hit.collider != null)
+            {
+                return true;
+            } 
         }
-        else return false;
+        return false;
 
     }
-    public float JumpPower
-    {
-        get
-        {
-            return jumpPower;
-        }
-        set
-        {
-            jumpPower = value;
-        }
-    }
-    public float Speed
-    {
-        get
-        {
-            return speed;
-        }
-        set
-        {
-            speed = value;
-        }
-    }
+    public float JumpPower{ get{return jumpPower;} set{jumpPower = value;} }
+    public float Speed{ get{return speed;} set{speed = value;} }
 
+    public void freeze()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        anim.SetBool("Walk", false);
+        walking = false;
+    }
 }
