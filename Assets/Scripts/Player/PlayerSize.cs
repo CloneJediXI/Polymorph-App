@@ -13,6 +13,8 @@ public class PlayerSize : MonoBehaviour
     private LineRenderer line;
     private float checkDistance = 6f;
 
+    public bool tooLong;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,21 +68,31 @@ public class PlayerSize : MonoBehaviour
         //                          Same with speed
         this.GetComponent<PlayerMovement>().Speed = initSpeed + (2 * (width - 1));
     }
+    public int getWidth()
+    {
+        return Mathf.RoundToInt(transform.localScale.x);
+    }
+    public int getHeight()
+    {
+        return Mathf.RoundToInt(transform.localScale.y);
+    }
     private void drawLine()
     {
         line.SetPosition(0, this.transform.position);
 
-        Vector3 temp = mousePosition;
+        Vector3 temp = mousePosition - transform.position;
         temp.z = 0;
         //If the line is too long
         if (temp.magnitude > checkDistance)
         {
             //Make the line the longest it can be
-            line.SetPosition(1, (temp.normalized * checkDistance));
+            line.SetPosition(1, (temp.normalized * checkDistance)+ transform.position);
+            tooLong = true;
         }
         else
         {
             line.SetPosition(1, mousePosition);
+            tooLong = false;
         }
     }
     public void interactCheck()

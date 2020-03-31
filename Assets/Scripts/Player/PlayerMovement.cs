@@ -18,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 7f;
     private float sprintModifier = 4f;
 
+    private Animator anim;
+    private bool walking;
+
     
 
     void Start()
@@ -26,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
         overlord = GameObject.Find("Overlord");
         state = overlord.GetComponent<GameState>();
         bottom = GameObject.Find("Player/Bottom");
+
+        anim = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -44,8 +49,18 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetAxisRaw("Horizontal") > 0.0f)
             {
                 move(Input.GetButton("Fire3"), Input.GetAxisRaw("Horizontal"));
+                faceRight(true);
             }else if (Input.GetAxisRaw("Horizontal") < 0.0f){
                 move(Input.GetButton("Fire3"), Input.GetAxisRaw("Horizontal"));
+                faceRight(false);
+            }
+            else
+            {
+                if (walking)
+                {
+                    anim.SetBool("Walk", false);
+                    walking = false;
+                }
             }
             
             if (Input.GetButtonDown("Jump"))
@@ -55,6 +70,17 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }
+    void faceRight(bool right)
+    {
+        if (right)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x)*(-1f), transform.localScale.y, transform.localScale.z);
+        }
+    }
     void move(bool sprint, float axisData)
     {
         if (sprint){
@@ -62,6 +88,8 @@ public class PlayerMovement : MonoBehaviour
         }else{
             rb.velocity = new Vector2(speed * axisData, rb.velocity.y);
         }
+        anim.SetBool("Walk", true);
+        walking = true;
     }
     void jump()
     {
