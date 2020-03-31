@@ -45,19 +45,18 @@ public class PlayerSize : MonoBehaviour
             halo.enabled = false;
             line.enabled = false;
         }
-        //R removes all the scale modifers
-        if (Input.GetKeyDown("r"))
-        {
-            transform.localScale = startingSize;
-            this.GetComponent<PlayerMovement>().JumpPower = initJumpPower;
-            this.GetComponent<PlayerMovement>().Speed = initSpeed;
-        }
         if (Input.GetButtonDown("Fire1") && interacting)
         {
             interactCheck();
         }
     }
     //A 1x1 is origional size
+    public void reset()
+    {
+        transform.localScale = startingSize;
+        this.GetComponent<PlayerMovement>().JumpPower = initJumpPower;
+        this.GetComponent<PlayerMovement>().Speed = initSpeed;
+    }
     public void changeSize(int width, int height)
     {
         transform.localScale = new Vector3(width, height, 1);

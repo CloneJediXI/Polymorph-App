@@ -14,6 +14,9 @@ public class Goal : MonoBehaviour
         if (t.CompareTag("Player"))
         {
             glassDoorAnima.SetBool("Close", true);
+            collision.gameObject.GetComponent<PlayerMovement>().freeze();
+            collision.gameObject.GetComponent<PlayerSize>().reset();
+            GameObject.Find("Overlord").GetComponent<GameState>().Paused = true;
             t.position = transform.position;
             StartCoroutine(LoadNextScene());
         }
