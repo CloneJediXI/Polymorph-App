@@ -5,22 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class Goal : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Animator glassDoorAnima;
+
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-       
+        //print("collided door");
+        Transform t = collision.transform;
+        if (t.CompareTag("Player"))
+        {
+            glassDoorAnima.SetBool("Close", true);
+            t.position = transform.position;
+            StartCoroutine(LoadNextScene());
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator LoadNextScene()
     {
-        
-    }
-    private void OnCollisionEnter(Collision collision) {
-        print("hello test");
-        GameObject colliededwith = collision.gameObject;
-        if (colliededwith.tag == "Player") {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
