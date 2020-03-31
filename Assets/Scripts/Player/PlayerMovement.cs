@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     private int jumpCounter;
     private int maxJumps = 1;//Number of extar jumps you get
-    private float jumpPower = 5;//How high you jump
+    private float jumpPower = 5.5f;//How high you jump
     private float groundCheckDistance = .1f;//How far to check for the ground
     public LayerMask jumpCheckMask; //Set to what you want to be checked ie. the ground
     private GameObject[] bottom;
