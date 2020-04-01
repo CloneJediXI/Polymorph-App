@@ -1325,6 +1325,62 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5880736530345805011, guid: e5e8570d6b7713a4490ef458088f196e,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 315
+      objectReference: {fileID: 0}
+    - target: {fileID: 5880736530345805011, guid: e5e8570d6b7713a4490ef458088f196e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 165
+      objectReference: {fileID: 0}
+    - target: {fileID: 5880736530345805011, guid: e5e8570d6b7713a4490ef458088f196e,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390570681784134768, guid: e5e8570d6b7713a4490ef458088f196e,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 305
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390570681784134768, guid: e5e8570d6b7713a4490ef458088f196e,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390570681784134768, guid: e5e8570d6b7713a4490ef458088f196e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 165
+      objectReference: {fileID: 0}
+    - target: {fileID: 1019548993203212972, guid: e5e8570d6b7713a4490ef458088f196e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 1019548993203212972, guid: e5e8570d6b7713a4490ef458088f196e,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390570681784134771, guid: e5e8570d6b7713a4490ef458088f196e,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Arrow Keys or WASD: Movement
+
+        E: Transform
+
+        Space: Jump
+
+        Press H to Hide'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390570681784134771, guid: e5e8570d6b7713a4490ef458088f196e,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5e8570d6b7713a4490ef458088f196e, type: 3}
 --- !u!1001 &3456779065155331428
