@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PlayerSize : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class PlayerSize : MonoBehaviour
     private float checkDistance = 6f;
 
     private bool tooLong;
+
+    public Animator bubbleAnima;
+    private bool changingSize;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +49,7 @@ public class PlayerSize : MonoBehaviour
             halo.enabled = false;
             line.enabled = false;
         }
-        if (Input.GetButtonDown("Fire1") && interacting)
+        if (Input.GetButtonDown("Fire1") && interacting && !changingSize)
         {
             interactCheck();
         }
@@ -59,7 +63,7 @@ public class PlayerSize : MonoBehaviour
     }
     public void changeSize(int width, int height)
     {
-        transform.localScale = new Vector3(width, height, 1);
+        StartCoroutine(ChangeScaleOverTime(width, height));
         //                   jump increases by 2 for each unit taller it is
         this.GetComponent<PlayerMovement>().JumpPower = initJumpPower + (2 * (height - 1));
         //                          Same with speed
@@ -101,5 +105,25 @@ public class PlayerSize : MonoBehaviour
     {
         Vector3 temp = mousePosition;
         temp.z = 0;
+    }
+
+    IEnumerator ChangeScaleOverTime(float w, float h)
+    {
+        bubbleAnima.SetBool("Bubble", true);
+        changingSize = true;
+        float time = 20;
+
+        Vector3 targetScale = new Vector3(w, h, 1);
+        Vector3 originalScale = transform.localScale;
+
+        for(int i = 0; i <= time; i++)
+        {
+            transform.localScale = Vector3.Lerp(originalScale, targetScale, i / time);
+            yield return null;
+        }
+
+        transform.localScale = targetScale;
+        changingSize = false;
+        bubbleAnima.SetBool("Bubble", false);
     }
 }
