@@ -70,7 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3718872687807683785}
   - component: {fileID: 6124963809974029961}
-  - component: {fileID: 9038441601718501401}
+  - component: {fileID: 2628786092208973707}
   m_Layer: 8
   m_Name: ChangingBubble
   m_TagString: Untagged
@@ -140,7 +140,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &9038441601718501401
+--- !u!95 &2628786092208973707
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2ab6cfa7fe8d94199c15e49ce6f92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bubbleAnima: {fileID: 9038441601718501401}
+  bubbleAnima: {fileID: 2628786092208973707}
 --- !u!61 &8172968081110067498
 BoxCollider2D:
   m_ObjectHideFlags: 0
