@@ -569,6 +569,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8172968081110067505, guid: 9df1660d549cbc446b1c3caadc798335,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124963809974029961, guid: 9df1660d549cbc446b1c3caadc798335,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9df1660d549cbc446b1c3caadc798335, type: 3}
 --- !u!1001 &640890666
@@ -787,6 +797,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405537311522176736, guid: 724eee6cc5d497443bdde0ec1a0c320b,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 724eee6cc5d497443bdde0ec1a0c320b, type: 3}
