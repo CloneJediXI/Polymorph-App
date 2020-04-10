@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7724829761157490803}
   - component: {fileID: 7724829761157490800}
   - component: {fileID: 2822697697330689258}
+  - component: {fileID: 2618894046106357204}
   m_Layer: 9
   m_Name: Block2x1 Prefab
   m_TagString: Untagged
@@ -124,6 +125,7 @@ MonoBehaviour:
   active: {fileID: 0}
   Block: {fileID: 7724829761157490807}
   range: 7
+  frozen: 0
 --- !u!122 &7724829761157490800
 Halo:
   m_ObjectHideFlags: 0
@@ -150,3 +152,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 2
   height: 1
+--- !u!50 &2618894046106357204
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7724829761157490807}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 50
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

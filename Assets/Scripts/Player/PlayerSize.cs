@@ -17,17 +17,22 @@ public class PlayerSize : MonoBehaviour
     public Animator bubbleAnima;
     private bool changingSize;
 
+    public bool frozen;
+    private PlayerMovement pm;
+
     // Start is called before the first frame update
     void Start()
     {
         startingSize = this.transform.localScale;
-        initSpeed = this.GetComponent<PlayerMovement>().Speed;
-        initJumpPower = this.GetComponent<PlayerMovement>().JumpPower;
+        pm = this.GetComponent<PlayerMovement>();
+        initSpeed = pm.Speed;
+        initJumpPower = pm.JumpPower;
         halo = (Behaviour)GetComponent("Halo");
         halo.enabled = false;
         line = GetComponent<LineRenderer>();
         line.positionCount = 2;
         line.enabled = false;
+        
 
     }
 

@@ -12,12 +12,34 @@ public class ShapeChange : MonoBehaviour
 
     private bool changingSize;
 
+    public bool frozen;
+    private Rigidbody2D rb;
+
     void Start()
     {
         active = (Behaviour)GetComponent("Halo");
         active.enabled = false;
         playerObj = GameObject.FindGameObjectWithTag("Player");
         blockSize = GetComponent<BlockSize>();
+
+        rb = GetComponent<Rigidbody2D>();
+        //Start with the object frozen or not
+        if (frozen)
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            this.GetComponent<SpriteRenderer>().color = Color.blue;
+        }
+    }
+    void Update()
+    {
+        if (frozen)
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        else
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
     }
     void OnMouseOver()
     {
@@ -40,13 +62,27 @@ public class ShapeChange : MonoBehaviour
         if (active.enabled == true && !changingSize)
         {
             PlayerSize playerSize = playerObj.GetComponent<PlayerSize>();
-
-            //transform.localScale = playerSize.getSize();
-            StartCoroutine(ChangeScaleOverTime(playerSize.getSize()));
-
-            playerSize.changeSize(blockSize.width, blockSize.height);
-            //blockSize.width = (int)transform.localScale.x;
-            //blockSize.height = (int)transform.localScale.y;
+            PlayerMovement playerMovement = playerObj.GetComponent<PlayerMovement>();
+            //If the block is frozen and the player is not
+            if (frozen && !playerMovement.frozen)
+            {
+                //Unfreze the block and freeze the player
+                this.GetComponent<SpriteRenderer>().color = Color.white;
+                frozen = false;
+                playerMovement.freeze(true);
+            }else if(!frozen && playerMovement.frozen)//if the block is not frozen and the player is
+            {
+                this.GetComponent<SpriteRenderer>().color = Color.blue;
+                frozen = true;
+                playerMovement.freeze(false);
+            }
+            else
+            {
+                //swap size
+                StartCoroutine(ChangeScaleOverTime(playerSize.getSize()));
+                playerSize.changeSize(blockSize.width, blockSize.height);
+            }
+            
         }
     }
 

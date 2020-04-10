@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private bool walking;
 
-
+    public bool frozen;
 
     void Start()
     {
@@ -99,6 +99,24 @@ public class PlayerMovement : MonoBehaviour
     public float JumpPower{ get{return jumpPower;} set{jumpPower = value;} }
     public float Speed{ get{return speed;} set{speed = value;} }
 
+    public void freeze(bool toFreeze)
+    {
+        if (toFreeze)
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            anim.SetBool("Walk", false);
+            walking = false;
+            this.GetComponent<SpriteRenderer>().color = Color.blue;
+        }
+        else
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            this.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+        state.Paused = toFreeze;
+        frozen = toFreeze;
+        
+    }
     public void freeze()
     {
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
