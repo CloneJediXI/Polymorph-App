@@ -2,7 +2,7 @@
 
 public class GameState : MonoBehaviour
 {
-    public int numSwaps;
+    private int numSwaps;
     public bool Paused { get; set; }
     public void swap()
     {
