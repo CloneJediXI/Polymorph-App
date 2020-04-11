@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask jumpCheckMask; //Set to what you want to be checked ie. the ground
     private GameObject[] bottom;
 
-    private float speed = 7f;
+    public float speed = 7f;
     private float sprintModifier = 4f;
 
     private Animator anim;

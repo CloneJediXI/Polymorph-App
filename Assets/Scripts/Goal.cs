@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,6 +13,9 @@ public class Goal : MonoBehaviour
     public string nextScene;
     public Sprite goldStar;
     private GameObject overlord;
+    private int numStars = 0;
+    private int swaps;
+    private LevelData data;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -29,28 +34,92 @@ public class Goal : MonoBehaviour
 
     IEnumerator LoadNextScene()
     {
-        yield return new WaitForSeconds(1.5f);
-        completionMessage.SetActive(true);
         overlord = GameObject.Find("Overlord");
+        yield return new WaitForSeconds(1.3f);
+        
+        completionMessage.SetActive(true);
+        
         GameState state = overlord.GetComponent<GameState>();
-        LevelData data = overlord.GetComponent<LevelData>();
-        int swaps = state.getSwaps();
-        if(swaps <= data.firstStar)
+        data = overlord.GetComponent<LevelData>();
+        Text parText = completionMessage.transform.GetChild(4).GetComponent<Text>();
+        Text scoreText = completionMessage.transform.GetChild(5).GetComponent<Text>();
+        parText.text = "Par Score : " + data.parSwaps;
+        scoreText.text = "Your Score : ";
+        swaps = state.getSwaps();
+        saveData();
+        yield return new WaitForSeconds(.5f);
+        numStars = 0;
+        if (swaps <= data.firstStar)
         {
             completionMessage.transform.GetChild(1).GetComponent<Image>().sprite = goldStar;
+            numStars++;
         }
+        yield return new WaitForSeconds(.5f);
         if (swaps <= data.SecondStar)
         {
             completionMessage.transform.GetChild(2).GetComponent<Image>().sprite = goldStar;
+            numStars++;
         }
+        yield return new WaitForSeconds(.5f);
         if (swaps <= data.parSwaps)
         {
             completionMessage.transform.GetChild(3).GetComponent<Image>().sprite = goldStar;
+            numStars++;
         }
-        Text parText= completionMessage.transform.GetChild(4).GetComponent<Text>();
-        parText.text = "Par Score : " + data.parSwaps;
-        Text scoreText = completionMessage.transform.GetChild(5).GetComponent<Text>();
+        yield return new WaitForSeconds(.5f);
         scoreText.text = "Your Score : " + state.getSwaps();
+    }
+    void saveData()
+    {
+        String line;
+        String total = "";
+        numStars = 0;
+        if (swaps <= data.firstStar)
+        {
+            numStars++;
+        }
+        if (swaps <= data.SecondStar)
+        {
+            numStars++;
+        }
+        if (swaps <= data.parSwaps)
+        {
+            numStars++;
+        }
+        try
+        {
+            //Pass the file path and file name to the StreamReader constructor
+            StreamReader sr = new StreamReader("Assets/Test.txt");
+            Debug.Log("Reading...");
+            String[] parts;
+            line = sr.ReadLine();
+            int level = overlord.GetComponent<LevelData>().levelNumber;
+            while (line != null)
+            {
+                parts = line.Split(',');
+                if(int.Parse(parts[0]) == (level-1))
+                {
+                    total += "" + (level-1) + "," + numStars+"\n";
+                }
+                else
+                {
+                    total += line + "\n";
+                }
+                line = sr.ReadLine();
+            }
+            Debug.Log("Done Reading...");
+            //close the file
+            sr.Close();
+            //Pass the filepath and filename to the StreamWriter Constructor
+            StreamWriter sw = new StreamWriter("Assets/Test.txt", false);
+            Debug.Log("Writing: "+ total);
+            sw.Write(total);
+            sw.Close();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+        }
     }
     public void retry()
     {

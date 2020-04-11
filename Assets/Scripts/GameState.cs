@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
@@ -15,5 +16,10 @@ public class GameState : MonoBehaviour
     public void resetSwaps()
     {
         numSwaps = 0;
+    }
+    public void resetScene()
+    {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
     }
 }
