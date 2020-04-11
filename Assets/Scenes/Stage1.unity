@@ -847,17 +847,6 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-    - target: {fileID: 737628350355133991, guid: 9df1660d549cbc446b1c3caadc798335,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6563457495724005655, guid: 9df1660d549cbc446b1c3caadc798335,
-        type: 3}
-      propertyPath: m_Distance
-      value: 38.40772
-=======
     - target: {fileID: 8172968081110067501, guid: 9df1660d549cbc446b1c3caadc798335,
         type: 3}
       propertyPath: eyeLocation
@@ -867,7 +856,6 @@ PrefabInstance:
         type: 3}
       propertyPath: eyeOfset
       value: 0.1
->>>>>>> 6d41ddcf69e5e30593ff6c67dcfa07b4e17129a9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9df1660d549cbc446b1c3caadc798335, type: 3}
