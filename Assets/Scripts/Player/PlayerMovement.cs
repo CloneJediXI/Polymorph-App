@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     private int jumpCounter;
     private int maxJumps = 1;//Number of extar jumps you get
-    private float jumpPower = 5.5f;//How high you jump
+    private float jumpPower = 6.5f;//How high you jump
     private float groundCheckDistance = .1f;//How far to check for the ground
     public LayerMask jumpCheckMask; //Set to what you want to be checked ie. the ground
     private GameObject[] bottom;
@@ -20,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
     private bool walking;
 
     public bool frozen;
+    public Transform eyeLocation;
+    private float eyeStart;
+    public float eyeOfset;
 
     void Start()
     {
@@ -29,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         bottom = new GameObject[] { GameObject.Find("Player/Bottom1"), GameObject.Find("Player/Bottom2"), GameObject.Find("Player/Bottom3") };
 
         anim = GetComponent<Animator>();
+        eyeStart = eyeLocation.localPosition.x;
     }
 
     void FixedUpdate()
@@ -55,6 +59,8 @@ public class PlayerMovement : MonoBehaviour
                 if (walking){
                     anim.SetBool("Walk", false);
                     walking = false;
+                    eyeLocation.localPosition = new Vector3(eyeStart, eyeLocation.localPosition.y, eyeLocation.localPosition.z);
+
                 }
             }
 
@@ -64,7 +70,15 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     void faceRight(bool right){
-        GetComponent<SpriteRenderer>().flipX = (!right);
+        if (right)
+        {
+            this.transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else
+        {
+            this.transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y, transform.localScale.z);
+        }
+        //GetComponent<SpriteRenderer>().flipX = (!right);
     }
     void move(bool sprint, float axisData){
         if (sprint){
@@ -73,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
         else{
             rb.velocity = new Vector2(speed * axisData, rb.velocity.y);
         }
+        eyeLocation.localPosition = new Vector3(eyeStart+eyeOfset, eyeLocation.localPosition.y, eyeLocation.localPosition.z);
         anim.SetBool("Walk", true);
         walking = true;
     }
