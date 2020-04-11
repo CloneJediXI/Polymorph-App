@@ -89,7 +89,7 @@ public class Goal : MonoBehaviour
         try
         {
             //Pass the file path and file name to the StreamReader constructor
-            StreamReader sr = new StreamReader("Assets/Test.txt");
+            StreamReader sr = new StreamReader("Assets/Data.txt");
             Debug.Log("Reading...");
             String[] parts;
             line = sr.ReadLine();
@@ -97,12 +97,25 @@ public class Goal : MonoBehaviour
             while (line != null)
             {
                 parts = line.Split(',');
+                //Once you get to the right level key
                 if(int.Parse(parts[0]) == (level-1))
                 {
-                    total += "" + (level-1) + "," + numStars+"\n";
+                    //if your new score is better
+                    if(numStars > int.Parse(parts[1]))
+                    {
+                        //Save score
+                        total += "" + (level-1) + "," + numStars+"\n";
+                    }
+                    else
+                    {
+                        //Don't change the data
+                        total += line + "\n";
+                    }
+                    
                 }
                 else
                 {
+                    //Don't change the data
                     total += line + "\n";
                 }
                 line = sr.ReadLine();
@@ -111,7 +124,7 @@ public class Goal : MonoBehaviour
             //close the file
             sr.Close();
             //Pass the filepath and filename to the StreamWriter Constructor
-            StreamWriter sw = new StreamWriter("Assets/Test.txt", false);
+            StreamWriter sw = new StreamWriter("Assets/Data.txt", false);
             Debug.Log("Writing: "+ total);
             sw.Write(total);
             sw.Close();

@@ -8,12 +8,12 @@ public class PlayerMovement : MonoBehaviour
 
     private int jumpCounter;
     private int maxJumps = 1;//Number of extar jumps you get
-    private float jumpPower = 6.5f;//How high you jump
+    private float jumpPower = 7.5f;//How high you jump
     private float groundCheckDistance = .1f;//How far to check for the ground
     public LayerMask jumpCheckMask; //Set to what you want to be checked ie. the ground
     private GameObject[] bottom;
 
-    public float speed = 7f;
+    private float speed = 7f;
     private float sprintModifier = 4f;
 
     private Animator anim;
@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public bool frozen;
     public Transform eyeLocation;
     private float eyeStart;
-    public float eyeOfset;
+    private float eyeOfset = .1f;
 
     void Start()
     {
@@ -123,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (toFreeze)
         {
-            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            //rb.constraints = RigidbodyConstraints2D.FreezeAll;
             anim.SetBool("Walk", false);
             walking = false;
             this.GetComponent<SpriteRenderer>().color = freezeColor;
