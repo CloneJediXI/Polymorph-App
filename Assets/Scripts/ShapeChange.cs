@@ -14,6 +14,7 @@ public class ShapeChange : MonoBehaviour
 
     public bool frozen;
     private Rigidbody2D rb;
+    private GameState state;
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class ShapeChange : MonoBehaviour
         blockSize = GetComponent<BlockSize>();
 
         rb = GetComponent<Rigidbody2D>();
+        state = GameObject.Find("Overlord").GetComponent<GameState>();
         //Start with the object frozen or not
         if (frozen)
         {
@@ -70,17 +72,20 @@ public class ShapeChange : MonoBehaviour
                 this.GetComponent<SpriteRenderer>().color = Color.white;
                 frozen = false;
                 playerMovement.freeze(true);
+                state.swap();
             }else if(!frozen && playerMovement.frozen)//if the block is not frozen and the player is
             {
                 this.GetComponent<SpriteRenderer>().color = Color.blue;
                 frozen = true;
                 playerMovement.freeze(false);
+                state.swap();
             }
             else
             {
                 //swap size
                 StartCoroutine(ChangeScaleOverTime(playerSize.getSize()));
                 playerSize.changeSize(blockSize.width, blockSize.height);
+                state.swap();
             }
             
         }
