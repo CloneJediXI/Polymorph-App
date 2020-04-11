@@ -12,6 +12,8 @@ public class ShapeChange : MonoBehaviour
 
     private bool changingSize;
 
+    public Color freezeColor = new Color(165, 250, 255);
+
     private ParticleSystem snowParticalsSystem;
     public bool frozen;
     private Rigidbody2D rb;
@@ -31,7 +33,7 @@ public class ShapeChange : MonoBehaviour
         if (frozen)
         {
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
-            this.GetComponent<SpriteRenderer>().color = Color.blue;
+            this.GetComponent<SpriteRenderer>().color = freezeColor;
         }
         else
         {
@@ -82,7 +84,7 @@ public class ShapeChange : MonoBehaviour
                 state.swap();
             }else if(!frozen && playerMovement.frozen)//if the block is not frozen and the player is
             {
-                this.GetComponent<SpriteRenderer>().color = Color.blue;
+                this.GetComponent<SpriteRenderer>().color = freezeColor;
                 frozen = true;
                 snowParticalsSystem.Play();
                 playerMovement.freeze(false);

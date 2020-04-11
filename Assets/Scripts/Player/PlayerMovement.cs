@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private bool walking;
 
+    private ParticleSystem snowParticalsSystem;
+    public Color freezeColor = new Color(165, 250, 255);
     public bool frozen;
     public Transform eyeLocation;
     private float eyeStart;
@@ -33,6 +35,9 @@ public class PlayerMovement : MonoBehaviour
 
         anim = GetComponent<Animator>();
         eyeStart = eyeLocation.localPosition.x;
+
+        snowParticalsSystem = GetComponentInChildren<ParticleSystem>();
+        snowParticalsSystem.Stop();
     }
 
     void FixedUpdate()
@@ -121,12 +126,14 @@ public class PlayerMovement : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             anim.SetBool("Walk", false);
             walking = false;
-            this.GetComponent<SpriteRenderer>().color = Color.blue;
+            this.GetComponent<SpriteRenderer>().color = freezeColor;
+            snowParticalsSystem.Play();
         }
         else
         {
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             this.GetComponent<SpriteRenderer>().color = Color.white;
+            snowParticalsSystem.Stop();
         }
         state.Paused = toFreeze;
         frozen = toFreeze;

@@ -126,6 +126,7 @@ MonoBehaviour:
   active: {fileID: 0}
   Block: {fileID: 2116426007536924724}
   range: 7
+  freezeColor: {r: 0.64705884, g: 0.9772358, b: 1, a: 1}
   frozen: 0
 --- !u!122 &2116426007536924721
 Halo:
