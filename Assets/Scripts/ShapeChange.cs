@@ -12,6 +12,7 @@ public class ShapeChange : MonoBehaviour
 
     private bool changingSize;
 
+    private ParticleSystem snowParticalsSystem;
     public bool frozen;
     private Rigidbody2D rb;
     private GameState state;
@@ -25,11 +26,16 @@ public class ShapeChange : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         state = GameObject.Find("Overlord").GetComponent<GameState>();
+        snowParticalsSystem = GetComponentInChildren<ParticleSystem>();
         //Start with the object frozen or not
         if (frozen)
         {
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             this.GetComponent<SpriteRenderer>().color = Color.blue;
+        }
+        else
+        {
+            snowParticalsSystem.Pause();
         }
     }
     void Update()
@@ -71,12 +77,14 @@ public class ShapeChange : MonoBehaviour
                 //Unfreze the block and freeze the player
                 this.GetComponent<SpriteRenderer>().color = Color.white;
                 frozen = false;
+                snowParticalsSystem.Stop();
                 playerMovement.freeze(true);
                 state.swap();
             }else if(!frozen && playerMovement.frozen)//if the block is not frozen and the player is
             {
                 this.GetComponent<SpriteRenderer>().color = Color.blue;
                 frozen = true;
+                snowParticalsSystem.Play();
                 playerMovement.freeze(false);
                 state.swap();
             }
