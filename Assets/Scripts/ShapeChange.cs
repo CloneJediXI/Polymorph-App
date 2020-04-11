@@ -103,7 +103,7 @@ public class ShapeChange : MonoBehaviour
     {
         float time = 20;
         changingSize = true;
-
+        playerScale = new Vector3(Mathf.Abs(playerScale.x), playerScale.y, playerScale.z);
         Vector3 originalScale = transform.localScale;
 
         for (int i = 0; i <= time; i++)
