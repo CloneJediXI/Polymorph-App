@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelSelect : MonoBehaviour
@@ -11,6 +12,7 @@ public class LevelSelect : MonoBehaviour
     public GameObject[] levels;
     public int[] stars;
     public Sprite goldStar;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +37,7 @@ public class LevelSelect : MonoBehaviour
         try
         {
             //Pass the file path and file name to the StreamReader constructor
-            StreamReader sr = new StreamReader("Assets/Test.txt");
+            StreamReader sr = new StreamReader("Assets/Data.txt");
             Debug.Log("Reading...");
             String[] parts;
             for (int i =0; i<levels.Length; i++)
@@ -49,15 +51,21 @@ public class LevelSelect : MonoBehaviour
             sr.Close();
             setStars();
         }
+        catch(FileNotFoundException e)
+        {
+            Debug.Log("Loading Defaults...");
+            loadDefaults();
+        }
         catch (Exception e)
         {
-            loadDefaults();
+            Debug.Log("Catching errors...");
+            //loadDefaults();
             Debug.LogError(e);
         }
     }
     void loadDefaults()
     {
-        StreamWriter sw = new StreamWriter("Assets/Test.txt");
+        StreamWriter sw = new StreamWriter("Assets/Data.txt");
         for(int i=0; i<levels.Length; i++)
         {
             sw.WriteLine(""+i+","+"0");
@@ -83,27 +91,13 @@ public class LevelSelect : MonoBehaviour
             }
         }
     }
-    void write()
+    public void back()
     {
-        try
-        {
-            //Pass the filepath and filename to the StreamWriter Constructor
-            StreamWriter sw = new StreamWriter("Assets/Test.txt");
-            //Write a line of text
-            sw.WriteLine("Hello World!!");
-            //Write a second line of text
-            sw.WriteLine("From the StreamWriter class");
-            //Close the file
-            sw.Close();
-        }
-        catch (Exception e)
-        {
-            Debug.Log("Exception: " + e.Message);
-        }
-        finally
-        {
-            Debug.Log("Executing finally block.");
-        }
+        SceneManager.LoadScene("MainMenu");
+    }
+    public void loadScene(String name)
+    {
+        SceneManager.LoadScene(name);
     }
 
 }

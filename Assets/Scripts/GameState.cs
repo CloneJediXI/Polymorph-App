@@ -19,7 +19,6 @@ public class GameState : MonoBehaviour
     }
     public void resetScene()
     {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

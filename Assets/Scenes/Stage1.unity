@@ -386,7 +386,7 @@ PrefabInstance:
     - target: {fileID: 1282163186304901476, guid: a0510c576e3a1ed41b08cea8d91012b7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.05
+      value: -22.96
       objectReference: {fileID: 0}
     - target: {fileID: 1282163186304901476, guid: a0510c576e3a1ed41b08cea8d91012b7,
         type: 3}
@@ -688,41 +688,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 636286259}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &834040026 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6512345593036191271, guid: 377165954436d484c991febc9c77a7a2,
-    type: 3}
-  m_PrefabInstance: {fileID: 640890666}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &834040027 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6512345593036191272, guid: 377165954436d484c991febc9c77a7a2,
     type: 3}
   m_PrefabInstance: {fileID: 640890666}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 834040026}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 899e0d2d16f968447a1c4f15bcc88ee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &834040029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 834040026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52c51836e2142b94d9065a8a296a83ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelName: 
-  levelNumber: 1
-  parSwaps: 3
-  SecondStar: 4
-  firstStar: 5
 --- !u!1001 &879388633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1732,6 +1709,16 @@ PrefabInstance:
       propertyPath: completionMessage
       value: 
       objectReference: {fileID: 1068627338}
+    - target: {fileID: 5343135096042420311, guid: 57da1d3a173160449a880a9082d2f186,
+        type: 3}
+      propertyPath: nextScene
+      value: Stage2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343135096042420309, guid: 57da1d3a173160449a880a9082d2f186,
+        type: 3}
+      propertyPath: m_Name
+      value: DoorWrapper
+      objectReference: {fileID: 0}
     - target: {fileID: 5343135096042420310, guid: 57da1d3a173160449a880a9082d2f186,
         type: 3}
       propertyPath: m_LocalPosition.x
