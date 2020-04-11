@@ -71,6 +71,32 @@ public class Goal : MonoBehaviour
     }
     void saveData()
     {
+        numStars = 0;
+        if (swaps <= data.firstStar)
+        {
+            numStars++;
+        }
+        if (swaps <= data.SecondStar)
+        {
+            numStars++;
+        }
+        if (swaps <= data.parSwaps)
+        {
+            numStars++;
+        }
+        if (PlayerPrefs.HasKey("level_" + (data.levelNumber-1)))
+        {
+            int temp = PlayerPrefs.GetInt("level_" + (data.levelNumber - 1));
+            if(numStars > temp)
+            {
+                PlayerPrefs.SetInt("level_"+ (data.levelNumber - 1), numStars);
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt("level_" + (data.levelNumber - 1), numStars);
+        }
+        /*
         String line;
         String total = "";
         numStars = 0;
@@ -132,7 +158,7 @@ public class Goal : MonoBehaviour
         catch (Exception e)
         {
             Debug.LogError(e);
-        }
+        }*/
     }
     public void retry()
     {

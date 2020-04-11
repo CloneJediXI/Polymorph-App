@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class LevelSelect : MonoBehaviour
 {
+    static readonly string LEVEL = "level_";
+
     public int numLevels;
     public GameObject[] levels;
     public int[] stars;
@@ -33,6 +35,21 @@ public class LevelSelect : MonoBehaviour
     }
     void read()
     {
+        for (int i = 0; i < levels.Length; i++)
+        {
+            if (PlayerPrefs.HasKey(LEVEL + i))
+            {
+                Debug.Log("Has Key " + LEVEL + i);
+                stars[i] = PlayerPrefs.GetInt(LEVEL + i);
+            }
+            else
+            {
+                Debug.Log("No Key " + LEVEL + i);
+                stars[i] = 0;
+            }
+        }
+        setStars();
+        /*
         String line;
         try
         {
@@ -61,7 +78,7 @@ public class LevelSelect : MonoBehaviour
             Debug.Log("Catching errors...");
             //loadDefaults();
             Debug.LogError(e);
-        }
+        }*/
     }
     void loadDefaults()
     {
