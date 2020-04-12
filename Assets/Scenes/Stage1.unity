@@ -389,17 +389,17 @@ PrefabInstance:
     - target: {fileID: 1282163186304901476, guid: a0510c576e3a1ed41b08cea8d91012b7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.96
+      value: -23
       objectReference: {fileID: 0}
     - target: {fileID: 1282163186304901476, guid: a0510c576e3a1ed41b08cea8d91012b7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.04
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1282163186304901476, guid: a0510c576e3a1ed41b08cea8d91012b7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 1282163186304901476, guid: a0510c576e3a1ed41b08cea8d91012b7,
         type: 3}
@@ -1550,6 +1550,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BackGround2
       objectReference: {fileID: 0}
+    - target: {fileID: 1371369931822505386, guid: cbdb0df7da1305544995eed4a6cb5f04,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4501356818280921603, guid: cbdb0df7da1305544995eed4a6cb5f04,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1947,6 +1952,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorWrapper
       objectReference: {fileID: 0}
+    - target: {fileID: 5343135096042420309, guid: 57da1d3a173160449a880a9082d2f186,
+        type: 3}
+      propertyPath: m_Name
+      value: DoorWrapper
+      objectReference: {fileID: 0}
     - target: {fileID: 5343135096042420311, guid: 57da1d3a173160449a880a9082d2f186,
         type: 3}
       propertyPath: completionMessage
@@ -1956,11 +1966,6 @@ PrefabInstance:
         type: 3}
       propertyPath: nextScene
       value: Stage2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5343135096042420309, guid: 57da1d3a173160449a880a9082d2f186,
-        type: 3}
-      propertyPath: m_Name
-      value: DoorWrapper
       objectReference: {fileID: 0}
     - target: {fileID: 5343135096042420310, guid: 57da1d3a173160449a880a9082d2f186,
         type: 3}

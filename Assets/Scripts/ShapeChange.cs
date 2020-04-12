@@ -12,10 +12,14 @@ public class ShapeChange : MonoBehaviour
 
     private bool changingSize;
 
-    public Color freezeColor = new Color(165, 250, 255);
+    public GameObject haloSprite;
+    public ParticleSystem snowParticalsSystem;
+    public ParticleSystem bubbleParticalsSystem;
 
-    private ParticleSystem snowParticalsSystem;
     public bool frozen;
+    public Color freezeColor = new Color(165, 250, 255);
+    public Color floatColor = new Color(180, 180, 180, 180);
+
     private Rigidbody2D rb;
     private GameState state;
 
@@ -23,12 +27,13 @@ public class ShapeChange : MonoBehaviour
     {
         active = (Behaviour)GetComponent("Halo");
         active.enabled = false;
+        haloSprite.SetActive(false);
+
         playerObj = GameObject.FindGameObjectWithTag("Player");
         blockSize = GetComponent<BlockSize>();
 
         rb = GetComponent<Rigidbody2D>();
         state = GameObject.Find("Overlord").GetComponent<GameState>();
-        snowParticalsSystem = GetComponentInChildren<ParticleSystem>();
         //Start with the object frozen or not
         if (frozen)
         {
@@ -38,6 +43,7 @@ public class ShapeChange : MonoBehaviour
         else
         {
             snowParticalsSystem.Pause();
+            bubbleParticalsSystem.Pause();
         }
     }
     void Update()
@@ -58,6 +64,7 @@ public class ShapeChange : MonoBehaviour
             if (Input.GetKey("e"))
             {
                 active.enabled = true;
+                haloSprite.SetActive(true);
             }
 
         }
@@ -66,6 +73,7 @@ public class ShapeChange : MonoBehaviour
     void OnMouseExit()
     {
         active.enabled = false;
+        haloSprite.SetActive(false);
     }
     void OnMouseDown()
     {
