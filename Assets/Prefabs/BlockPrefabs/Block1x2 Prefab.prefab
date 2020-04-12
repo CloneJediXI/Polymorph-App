@@ -141,7 +141,7 @@ Halo:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8986302345855671497}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Color:
     serializedVersion: 2
     rgba: 4286611584
@@ -274,6 +274,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Halo
       objectReference: {fileID: 0}
+    - target: {fileID: 1292240969977296044, guid: cf73969c2035e4843bd4bb84c2b738f7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9008511455682063711, guid: cf73969c2035e4843bd4bb84c2b738f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -328,6 +333,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092218281807567254, guid: cf73969c2035e4843bd4bb84c2b738f7,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf73969c2035e4843bd4bb84c2b738f7, type: 3}
