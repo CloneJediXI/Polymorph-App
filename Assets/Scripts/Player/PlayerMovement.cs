@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public Color freezeColor = new Color(165, 250, 255);
     public Color floatColor = new Color(217, 217, 217, 242);
     public bool frozen;
+	public bool fly;
 
     public Transform eyeLocation;
     private float eyeStart;
@@ -212,6 +213,19 @@ public class PlayerMovement : MonoBehaviour
         frozen = toFreeze;
         
     }
+	public void flight(bool tofly)
+    {
+		if(tofly)
+		{
+			rb.gravityScale = -1;
+		}
+		else 
+		{
+			rb.gravityScale = 1;
+		}
+		fly = tofly;
+	}
+
     public void freeze()
     {
         rb.constraints = RigidbodyConstraints2D.FreezeAll;

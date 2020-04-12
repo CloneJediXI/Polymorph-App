@@ -19,7 +19,7 @@ public class ShapeChange : MonoBehaviour
     public bool frozen;
     public Color freezeColor = new Color(165, 250, 255);
     public Color floatColor = new Color(180, 180, 180, 180);
-
+	public bool fly;
     private Rigidbody2D rb;
     private GameState state;
 
@@ -56,6 +56,13 @@ public class ShapeChange : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
+		if(fly)
+		{
+			rb.gravityScale = -1;
+		}
+		else{
+			rb.gravityScale = 1;
+		}
     }
     void OnMouseOver()
     {
@@ -98,6 +105,16 @@ public class ShapeChange : MonoBehaviour
                 playerMovement.freeze(false);
                 state.swap();
             }
+			else if(fly && !playerMovement.fly)
+			{
+				fly = false;
+				playerMovement.flight(true);
+			}
+			else if(!fly && playerMovement.fly)
+			{
+				fly = true;
+				playerMovement.flight(false);
+			}
             else
             {
                 //swap size

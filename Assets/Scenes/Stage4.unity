@@ -549,15 +549,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 834040029, guid: 377165954436d484c991febc9c77a7a2, type: 3}
       propertyPath: parSwaps
-      value: 24
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 834040029, guid: 377165954436d484c991febc9c77a7a2, type: 3}
       propertyPath: SecondStar
-      value: 32
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 834040029, guid: 377165954436d484c991febc9c77a7a2, type: 3}
       propertyPath: firstStar
-      value: 38
+      value: 32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 377165954436d484c991febc9c77a7a2, type: 3}
