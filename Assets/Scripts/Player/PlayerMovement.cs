@@ -19,9 +19,13 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private bool walking;
 
-    private ParticleSystem snowParticalsSystem;
+    public ParticleSystem snowParticalsSystem; 
+    public ParticleSystem bubbleParticalsSystem;
+
     public Color freezeColor = new Color(165, 250, 255);
+    public Color floatColor = new Color(217, 217, 217, 242);
     public bool frozen;
+
     public Transform eyeLocation;
     private float eyeStart;
     private float eyeOfset = .1f;
@@ -36,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         eyeStart = eyeLocation.localPosition.x;
 
-        snowParticalsSystem = GetComponentInChildren<ParticleSystem>();
+        bubbleParticalsSystem.Stop();
         snowParticalsSystem.Stop();
     }
 
