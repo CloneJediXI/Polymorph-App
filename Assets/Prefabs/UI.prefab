@@ -496,7 +496,7 @@ PrefabInstance:
     - target: {fileID: 8141828756701777183, guid: d67af5a8c6351c64798c8d975781eb62,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 165
+      value: 149.8
       objectReference: {fileID: 0}
     - target: {fileID: 8141828756701777183, guid: d67af5a8c6351c64798c8d975781eb62,
         type: 3}
@@ -506,12 +506,12 @@ PrefabInstance:
     - target: {fileID: 8141828756701777183, guid: d67af5a8c6351c64798c8d975781eb62,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 120
+      value: 150.5
       objectReference: {fileID: 0}
     - target: {fileID: 6129486220610577852, guid: d67af5a8c6351c64798c8d975781eb62,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 165
+      value: 150.6
       objectReference: {fileID: 0}
     - target: {fileID: 6129486220610577852, guid: d67af5a8c6351c64798c8d975781eb62,
         type: 3}
@@ -521,7 +521,7 @@ PrefabInstance:
     - target: {fileID: 6129486220610577852, guid: d67af5a8c6351c64798c8d975781eb62,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 110
+      value: 138.7
       objectReference: {fileID: 0}
     - target: {fileID: 3406743054547540832, guid: d67af5a8c6351c64798c8d975781eb62,
         type: 3}
@@ -541,13 +541,24 @@ PrefabInstance:
     - target: {fileID: 6129486220610577855, guid: d67af5a8c6351c64798c8d975781eb62,
         type: 3}
       propertyPath: m_Text
-      value: 'Arrow Keys or WASD: Movement
+      value: 'Arrow Keys: Movement
 
-        E: Transform
+        E: Select gray block in range
+
+        LMB: Transform into selected block
+
+        R: Reset
 
         Space: Jump
 
+        Space in Air: Double Jump
+
         Press H to Hide'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6129486220610577855, guid: d67af5a8c6351c64798c8d975781eb62,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d67af5a8c6351c64798c8d975781eb62, type: 3}
@@ -570,11 +581,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8390570680144630983}
     m_Modifications:
-    - target: {fileID: 8747049770457310642, guid: 6e3df8c7bcd6fbd488c24d8d3199be8c,
-        type: 3}
-      propertyPath: m_Name
-      value: LevelComplete
-      objectReference: {fileID: 0}
     - target: {fileID: 8747049770457310643, guid: 6e3df8c7bcd6fbd488c24d8d3199be8c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -629,6 +635,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8747049770457310642, guid: 6e3df8c7bcd6fbd488c24d8d3199be8c,
+        type: 3}
+      propertyPath: m_Name
+      value: LevelComplete
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e3df8c7bcd6fbd488c24d8d3199be8c, type: 3}

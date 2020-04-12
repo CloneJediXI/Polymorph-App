@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6504630099995162058}
   m_Layer: 0
-  m_Name: HelpScreen
+  m_Name: Helpscreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,10 +186,14 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Arrow Keys: Movement
 
-    E: Transform
+    E: Select gray block in range
+
+    LMB: Transform into selected block
 
     R: Reset
 
     Space: Jump
+
+    Space in Air: Double Jump
 
     Press H to Hide'
