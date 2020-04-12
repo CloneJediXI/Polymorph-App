@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public ParticleSystem bubbleParticalsSystem;
 
     public Color freezeColor = new Color(165, 250, 255);
-    public Color floatClor = new Color(180, 180, 180, 180);
+    public Color floatColor = new Color(217, 217, 217, 242);
     public bool frozen;
 
     public Transform eyeLocation;
