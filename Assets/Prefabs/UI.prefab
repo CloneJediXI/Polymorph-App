@@ -547,8 +547,6 @@ PrefabInstance:
 
         LMB: Transform into selected block
 
-        R: Reset
-
         Space: Jump
 
         Space in Air: Double Jump
@@ -585,11 +583,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LevelComplete
-      objectReference: {fileID: 0}
-    - target: {fileID: 8747049770457310642, guid: 6e3df8c7bcd6fbd488c24d8d3199be8c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8747049770457310643, guid: 6e3df8c7bcd6fbd488c24d8d3199be8c,
         type: 3}
@@ -645,36 +638,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8747049771727382046, guid: 6e3df8c7bcd6fbd488c24d8d3199be8c,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.17475079
-      objectReference: {fileID: 0}
-    - target: {fileID: 8747049771727382046, guid: 6e3df8c7bcd6fbd488c24d8d3199be8c,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.7264151
-      objectReference: {fileID: 0}
-    - target: {fileID: 8747049771727382046, guid: 6e3df8c7bcd6fbd488c24d8d3199be8c,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.24107105
-      objectReference: {fileID: 0}
-    - target: {fileID: 8747049771717218797, guid: 6e3df8c7bcd6fbd488c24d8d3199be8c,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.9056604
-      objectReference: {fileID: 0}
-    - target: {fileID: 8747049771717218797, guid: 6e3df8c7bcd6fbd488c24d8d3199be8c,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.20932718
-      objectReference: {fileID: 0}
-    - target: {fileID: 8747049771717218797, guid: 6e3df8c7bcd6fbd488c24d8d3199be8c,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.20932718
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e3df8c7bcd6fbd488c24d8d3199be8c, type: 3}
