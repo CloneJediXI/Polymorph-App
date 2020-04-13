@@ -96,69 +96,7 @@ public class Goal : MonoBehaviour
         {
             PlayerPrefs.SetInt("level_" + (data.levelNumber - 1), numStars);
         }
-        /*
-        String line;
-        String total = "";
-        numStars = 0;
-        if (swaps <= data.firstStar)
-        {
-            numStars++;
-        }
-        if (swaps <= data.SecondStar)
-        {
-            numStars++;
-        }
-        if (swaps <= data.parSwaps)
-        {
-            numStars++;
-        }
-        try
-        {
-            //Pass the file path and file name to the StreamReader constructor
-            StreamReader sr = new StreamReader("Assets/Data.txt");
-            Debug.Log("Reading...");
-            String[] parts;
-            line = sr.ReadLine();
-            int level = overlord.GetComponent<LevelData>().levelNumber;
-            while (line != null)
-            {
-                parts = line.Split(',');
-                //Once you get to the right level key
-                if(int.Parse(parts[0]) == (level-1))
-                {
-                    //if your new score is better
-                    if(numStars > int.Parse(parts[1]))
-                    {
-                        //Save score
-                        total += "" + (level-1) + "," + numStars+"\n";
-                    }
-                    else
-                    {
-                        //Don't change the data
-                        total += line + "\n";
-                    }
-                    
-                }
-                else
-                {
-                    //Don't change the data
-                    total += line + "\n";
-                }
-                line = sr.ReadLine();
-            }
-            Debug.Log("Done Reading...");
-            //close the file
-            sr.Close();
-            //Pass the filepath and filename to the StreamWriter Constructor
-            StreamWriter sw = new StreamWriter("Assets/Data.txt", false);
-            Debug.Log("Writing: "+ total);
-            sw.Write(total);
-            sw.Close();
-        }
-        catch (Exception e)
-        {
-            Debug.LogError(e);
-        }*/
+        
     }
     public void retry()
     {

@@ -418,18 +418,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 377165954436d484c991febc9c77a7a2, type: 3}
---- !u!114 &197945590 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6512345593036191272, guid: 377165954436d484c991febc9c77a7a2,
-    type: 3}
-  m_PrefabInstance: {fileID: 197945589}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 899e0d2d16f968447a1c4f15bcc88ee8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &314519794
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1457,11 +1445,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5400832006488015025, guid: e5e8570d6b7713a4490ef458088f196e,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 197945590}
     - target: {fileID: 2726281870925173909, guid: e5e8570d6b7713a4490ef458088f196e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
