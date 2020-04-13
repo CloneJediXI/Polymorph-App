@@ -14,18 +14,23 @@ public class LevelSelect : MonoBehaviour
     public GameObject[] levels;
     public int[] stars;
     public Sprite goldStar;
+
+    public bool mainMenu;
     
     // Start is called before the first frame update
     void Start()
     {
-        GameObject canvas = GameObject.Find("Canvas");
-        levels = new GameObject[numLevels];
-        stars = new int[numLevels];
-        for(int i=0; i<numLevels; i++)
+        if (!mainMenu)
         {
-            levels[i] = canvas.transform.GetChild(i + 3).gameObject;
+            GameObject canvas = GameObject.Find("Canvas");
+            levels = new GameObject[numLevels];
+            stars = new int[numLevels];
+            for (int i = 0; i < numLevels; i++)
+            {
+                levels[i] = canvas.transform.GetChild(i + 3).gameObject;
+            }
+            read();
         }
-        read();
     }
 
     // Update is called once per frame
@@ -49,36 +54,6 @@ public class LevelSelect : MonoBehaviour
             }
         }
         setStars();
-        /*
-        String line;
-        try
-        {
-            //Pass the file path and file name to the StreamReader constructor
-            StreamReader sr = new StreamReader("Assets/Data.txt");
-            Debug.Log("Reading...");
-            String[] parts;
-            for (int i =0; i<levels.Length; i++)
-            {
-                line = sr.ReadLine();
-                parts = line.Split(',');
-                stars[i] = int.Parse(parts[1]);
-            }
-            Debug.Log("Done Reading...");
-            //close the file
-            sr.Close();
-            setStars();
-        }
-        catch(FileNotFoundException e)
-        {
-            Debug.Log("Loading Defaults...");
-            loadDefaults();
-        }
-        catch (Exception e)
-        {
-            Debug.Log("Catching errors...");
-            //loadDefaults();
-            Debug.LogError(e);
-        }*/
     }
     void loadDefaults()
     {
@@ -115,6 +90,10 @@ public class LevelSelect : MonoBehaviour
     public void loadScene(String name)
     {
         SceneManager.LoadScene(name);
+    }
+    public void quit()
+    {
+        Application.Quit();
     }
 
 }
