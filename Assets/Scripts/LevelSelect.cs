@@ -27,7 +27,7 @@ public class LevelSelect : MonoBehaviour
             stars = new int[numLevels];
             for (int i = 0; i < numLevels; i++)
             {
-                levels[i] = canvas.transform.GetChild(i + 3).gameObject;
+                levels[i] = canvas.transform.GetChild(i + 2).gameObject;
             }
             read();
         }
@@ -95,5 +95,8 @@ public class LevelSelect : MonoBehaviour
     {
         Application.Quit();
     }
-
+    public void resetAll()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }
