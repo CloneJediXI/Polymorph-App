@@ -43,8 +43,8 @@ public class ShapeChange : MonoBehaviour
         else
         {
             snowParticalsSystem.Pause();
-            bubbleParticalsSystem.Pause();
         }
+        bubbleParticalsSystem.Pause();
     }
     void Update()
     {

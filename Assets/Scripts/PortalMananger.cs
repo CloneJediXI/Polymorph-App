@@ -4,40 +4,54 @@ using UnityEngine;
 
 public class PortalMananger : MonoBehaviour
 {
-    private GameObject block;
-    private ShapeChange sc;
-    private Rigidbody2D rb;
+    private GameObject[] blocks;
+    private ShapeChange[] sc;
+    private Rigidbody2D[] rb;
+
     private GameObject top;
     private GameObject bottom;
+
     public int speed;
     // Start is called before the first frame update
     void Start()
     {
         top = transform.GetChild(0).gameObject;
-        block = transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
-        block.AddComponent<Portal>();
-        block.GetComponent<Portal>().setBlock(this);
-        rb = block.GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0;
-        sc = block.GetComponent<ShapeChange>();
+        Transform blockHolder = transform.GetChild(1);
         bottom = transform.GetChild(2).gameObject;
-        rb.velocity = new Vector3(0, -speed, 0);
+
+        blocks = new GameObject[blockHolder.childCount];
+        sc = new ShapeChange[blocks.Length];
+        rb = new Rigidbody2D[blocks.Length];
+
+        for(int i = 0; i < blocks.Length; i++)
+        {
+            blocks[i] = blockHolder.GetChild(i).gameObject;
+            blocks[i].AddComponent<Portal>();
+            blocks[i].GetComponent<Portal>().setBlock(this);
+            sc[i] = blocks[i].GetComponent<ShapeChange>();
+            rb[i] = blocks[i].GetComponent<Rigidbody2D>();
+            rb[i].gravityScale = 0;
+            rb[i].velocity = new Vector3(0, -speed, 0);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!sc.frozen)
+        for(int i = 0; i < blocks.Length; i++)
         {
-            rb.velocity = new Vector3(0, -speed, 0);
+            if (!sc[i].frozen)
+            {
+                rb[i].velocity = new Vector3(0, -speed, 0);
+            }
         }
     }
-    public void moveTop()
+    public float getTopY()
     {
-        block.transform.position = top.transform.position;
+        return top.transform.position.y;
     }
-    public void moveBottom()
+    public float getBotY()
     {
-        block.transform.position = bottom.transform.position;
+        return bottom.transform.position.y;
     }
 }
