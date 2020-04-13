@@ -1985,7 +1985,7 @@ PrefabInstance:
     - target: {fileID: 5343135096042420311, guid: 57da1d3a173160449a880a9082d2f186,
         type: 3}
       propertyPath: nextScene
-      value: Stage1
+      value: Stage7
       objectReference: {fileID: 0}
     - target: {fileID: 5343135096042420310, guid: 57da1d3a173160449a880a9082d2f186,
         type: 3}
