@@ -17,11 +17,13 @@ public class Portal : MonoBehaviour
     {
         if(other.tag == "PTop" && !inTop)
         {
-            pm.moveBottom();
+            Vector3 newPos = new Vector3(transform.position.x, pm.getBotY());
+            transform.position = newPos;
             inBottom = true;
         }else if(other.tag == "PBottom" && !inBottom)
         {
-            pm.moveTop();
+            Vector3 newPos = new Vector3(transform.position.x, pm.getTopY());
+            transform.position = newPos;
             inTop = true;
         }
     }
