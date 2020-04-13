@@ -44,7 +44,9 @@ public class ShapeChange : MonoBehaviour
         {
             snowParticalsSystem.Stop();
         }
-        if(!fly)
+        if(fly)
+            this.GetComponent<SpriteRenderer>().color = floatColor;
+        else
             bubbleParticalsSystem.Stop();
     }
     void Update()
