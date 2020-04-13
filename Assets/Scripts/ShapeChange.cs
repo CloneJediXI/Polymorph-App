@@ -42,9 +42,10 @@ public class ShapeChange : MonoBehaviour
         }
         else
         {
-            snowParticalsSystem.Pause();
+            snowParticalsSystem.Stop();
         }
-        bubbleParticalsSystem.Pause();
+        if(!fly)
+            bubbleParticalsSystem.Stop();
     }
     void Update()
     {
@@ -108,12 +109,16 @@ public class ShapeChange : MonoBehaviour
 			else if(fly && !playerMovement.fly)
 			{
 				fly = false;
-				playerMovement.flight(true);
+                bubbleParticalsSystem.Stop();
+                this.GetComponent<SpriteRenderer>().color = Color.white;
+                playerMovement.flight(true);
 			}
 			else if(!fly && playerMovement.fly)
 			{
 				fly = true;
-				playerMovement.flight(false);
+                bubbleParticalsSystem.Play();
+                this.GetComponent<SpriteRenderer>().color = floatColor;
+                playerMovement.flight(false);
 			}
             else
             {

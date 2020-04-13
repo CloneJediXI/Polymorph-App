@@ -218,11 +218,15 @@ public class PlayerMovement : MonoBehaviour
 		if(tofly)
 		{
 			rb.gravityScale = -1;
-		}
+            this.GetComponent<SpriteRenderer>().color = floatColor;
+            bubbleParticalsSystem.Play();
+        }
 		else 
 		{
 			rb.gravityScale = 1;
-		}
+            this.GetComponent<SpriteRenderer>().color = Color.white;
+            bubbleParticalsSystem.Stop();
+        }
 		fly = tofly;
 	}
 
