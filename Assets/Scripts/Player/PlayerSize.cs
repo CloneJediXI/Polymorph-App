@@ -6,7 +6,7 @@ public class PlayerSize : MonoBehaviour
     private Vector3 startingSize;
     private float initSpeed;
     private float initJumpPower;
-    private bool interacting;
+    public bool interacting;
     private Behaviour halo;
     private Vector3 mousePosition;
     private LineRenderer line;
@@ -40,17 +40,19 @@ public class PlayerSize : MonoBehaviour
     void Update()
     {
         //E is the interact key
-        if (Input.GetKey("e"))
+        if (Input.GetKeyDown("e"))
         {
-            interacting = true;
+            interacting = !interacting;
+        }
+        if (interacting)
+        {
             halo.enabled = true;
             line.enabled = true;
             mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             drawLine();
         }
-        if (Input.GetKeyUp("e"))
+        else
         {
-            interacting = false;
             halo.enabled = false;
             line.enabled = false;
         }

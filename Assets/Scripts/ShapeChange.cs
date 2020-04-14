@@ -7,6 +7,7 @@ public class ShapeChange : MonoBehaviour
     public Behaviour active;
     public GameObject Block;
     private GameObject playerObj = null;
+    private PlayerSize pSize;
     public int range = 7;
     private BlockSize blockSize;
 
@@ -30,6 +31,7 @@ public class ShapeChange : MonoBehaviour
         haloSprite.SetActive(false);
 
         playerObj = GameObject.FindGameObjectWithTag("Player");
+        pSize = playerObj.GetComponent<PlayerSize>();
         blockSize = GetComponent<BlockSize>();
 
         rb = GetComponent<Rigidbody2D>();
@@ -71,7 +73,7 @@ public class ShapeChange : MonoBehaviour
     {
         if (Vector3.Distance(Block.transform.position, playerObj.transform.position) < range)
         {
-            if (Input.GetKey("e"))
+            if (pSize.interacting)
             {
                 active.enabled = true;
                 haloSprite.SetActive(true);
