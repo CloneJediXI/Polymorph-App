@@ -19,10 +19,13 @@ public class PlayerSize : MonoBehaviour
 
     public bool frozen;
     private PlayerMovement pm;
+    GameState state;
 
     // Start is called before the first frame update
     void Start()
     {
+        state = GameObject.Find("Overlord").GetComponent<GameState>();
+
         startingSize = this.transform.localScale;
         pm = this.GetComponent<PlayerMovement>();
         initSpeed = pm.Speed;
@@ -55,6 +58,11 @@ public class PlayerSize : MonoBehaviour
         {
             halo.enabled = false;
             line.enabled = false;
+        }
+        //Id the game is paused, don't allow interacting
+        if (state.Paused)
+        {
+            interacting = false;
         }
         if (Input.GetButtonDown("Fire1") && interacting && !changingSize)
         {

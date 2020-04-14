@@ -38,6 +38,8 @@ public class Goal : MonoBehaviour
         yield return new WaitForSeconds(1.3f);
         
         completionMessage.SetActive(true);
+        GameObject button = completionMessage.transform.GetChild(7).gameObject;
+        button.GetComponent<Button>().interactable = false;
         
         GameState state = overlord.GetComponent<GameState>();
         data = overlord.GetComponent<LevelData>();
@@ -53,21 +55,24 @@ public class Goal : MonoBehaviour
         {
             completionMessage.transform.GetChild(1).GetComponent<Image>().sprite = goldStar;
             numStars++;
+            yield return new WaitForSeconds(.5f);
         }
-        yield return new WaitForSeconds(.5f);
+        
         if (swaps <= data.SecondStar)
         {
             completionMessage.transform.GetChild(2).GetComponent<Image>().sprite = goldStar;
             numStars++;
+            yield return new WaitForSeconds(.5f);
         }
-        yield return new WaitForSeconds(.5f);
+        
         if (swaps <= data.parSwaps)
         {
             completionMessage.transform.GetChild(3).GetComponent<Image>().sprite = goldStar;
             numStars++;
+            yield return new WaitForSeconds(.5f);
         }
-        yield return new WaitForSeconds(.5f);
         scoreText.text = "Your Score : " + state.getSwaps();
+        button.GetComponent<Button>().interactable = true;
     }
     void saveData()
     {
