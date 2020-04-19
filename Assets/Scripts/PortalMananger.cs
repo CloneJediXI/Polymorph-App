@@ -40,7 +40,7 @@ public class PortalMananger : MonoBehaviour
     {
         for(int i = 0; i < blocks.Length; i++)
         {
-            if (!sc[i].frozen)
+            if (!sc[i].frozen && speed != 0)
             {
                 rb[i].velocity = new Vector3(0, -speed, 0);
             }
