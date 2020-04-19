@@ -11,6 +11,7 @@ public class Teleport : MonoBehaviour
     public int range = 7;
 
     public GameObject haloSprite;
+    private GameState state;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class Teleport : MonoBehaviour
         haloSprite.SetActive(false);
         playerObj = GameObject.FindGameObjectWithTag("Player");
         pSize = playerObj.GetComponent<PlayerSize>();
+        state = GameObject.Find("Overlord").GetComponent<GameState>();
     }
     void OnMouseOver()
     {
@@ -42,6 +44,7 @@ public class Teleport : MonoBehaviour
             Vector3 temp = this.transform.position;
             transform.position = playerObj.transform.position;
             playerObj.transform.position = temp;
+            state.swap();
         }
     }
 }
