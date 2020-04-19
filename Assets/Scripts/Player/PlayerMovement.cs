@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private float jumpPower = 5.5f;//How high you jump
     private float groundCheckDistance = .1f;//How far to check for the ground
     public LayerMask jumpCheckMask; //Set to what you want to be checked ie. the ground
-    public GameObject[] bottom;
+    private GameObject[] bottom;
 
     private float speed = 6.5f;
     private float sprintModifier = 4f;
@@ -33,12 +33,12 @@ public class PlayerMovement : MonoBehaviour
     private float eyeOfset = .1f;
 
     
-    public bool[] feet;
-    
-    public bool inWallRight = false;
-    public bool inWallLeft = false;
-    public bool onGround;
-    public bool tempOnground;
+    private bool[] feet;
+
+    private bool inWallRight = false;
+    private bool inWallLeft = false;
+    private bool onGround;
+    private bool tempOnground;
 
     void Start()
     {
@@ -51,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
         {
             bottom[i] = transform.GetChild(i+1).gameObject;
         }
-        //bottom = new GameObject[] { GameObject.Find("Player/Bottom1"), GameObject.Find("Player/Bottom2"), GameObject.Find("Player/Bottom3") };
 
         anim = GetComponent<Animator>();
         eyeStart = eyeLocation.localPosition.x;
@@ -104,7 +103,6 @@ public class PlayerMovement : MonoBehaviour
         {
             this.transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y, transform.localScale.z);
         }
-        //GetComponent<SpriteRenderer>().flipX = (!right);
     }
     void move(bool sprint, float axisData){
         if (sprint){
@@ -126,23 +124,6 @@ public class PlayerMovement : MonoBehaviour
     void grounded()
     {
 
-
-        //If the two ends are in the wall
-        /*RaycastHit2D hit = Physics2D.Raycast(bottom[0].transform.position, Vector2.up, groundCheckDistance, jumpCheckMask);
-        if (hit.collider != null)
-        {
-            inWallLeft = true;
-        }
-        else
-        {
-            inWallLeft = false;
-        }
-        hit = Physics2D.Raycast(bottom[bottom.Length-1].transform.position, Vector2.up, groundCheckDistance, jumpCheckMask);
-        if (hit.collider != null)
-        {
-            inWallRight = true;
-        }*/
-
         RaycastHit2D hit;
         //Check all of the feet
         for (int i = 0; i < bottom.Length; i++)
@@ -158,31 +139,6 @@ public class PlayerMovement : MonoBehaviour
                 feet[i] = false;
             }
         }
-
-
-        //If it is in the wall, check to see if any of the others are on the ground
-        //If so, then jump
-        /*if (inWallRight)
-        {
-            for(int i = 1; i<feet.Length; i++)
-            {
-                if (feet[i])
-                {
-                    return true;
-
-                }
-            }
-        }
-        else if (inWallLeft)
-        {
-            for (int i = 1; i < feet.Length-1; i++)
-            {
-                if (feet[i])
-                {
-                    return true;
-                }
-            }
-        }*/
         tempOnground = false;
         //If it is not in the wall, any of the feet will do
             for (int i = 0; i < feet.Length; i++)
@@ -200,8 +156,6 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(jumpWait());
         }
-        
-
     }
     IEnumerator jumpWait()
     {
@@ -227,7 +181,7 @@ public class PlayerMovement : MonoBehaviour
             this.GetComponent<SpriteRenderer>().color = Color.white;
             snowParticalsSystem.Stop();
         }
-        state.Paused = toFreeze;
+        
         frozen = toFreeze;
         
     }
@@ -253,5 +207,6 @@ public class PlayerMovement : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         anim.SetBool("Walk", false);
         walking = false;
+        state.Paused = true;
     }
 }
