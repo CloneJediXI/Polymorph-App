@@ -116,14 +116,16 @@ public class ShapeChange : MonoBehaviour
                 bubbleParticalsSystem.Stop();
                 this.GetComponent<SpriteRenderer>().color = Color.white;
                 playerMovement.flight(true);
-			}
+                state.swap();
+            }
 			else if(!fly && playerMovement.fly)
 			{
 				fly = true;
                 bubbleParticalsSystem.Play();
                 this.GetComponent<SpriteRenderer>().color = floatColor;
                 playerMovement.flight(false);
-			}
+                state.swap();
+            }
             else
             {
                 //swap size
