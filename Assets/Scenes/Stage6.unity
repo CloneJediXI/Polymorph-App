@@ -1490,7 +1490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 834040029, guid: 377165954436d484c991febc9c77a7a2, type: 3}
       propertyPath: parSwaps
-      value: 8
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 834040029, guid: 377165954436d484c991febc9c77a7a2, type: 3}
       propertyPath: firstStar
@@ -2449,6 +2449,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5400832006488015025, guid: e5e8570d6b7713a4490ef458088f196e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 652540186}
+    - target: {fileID: 5400832006488015025, guid: e5e8570d6b7713a4490ef458088f196e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: resetScene
+      objectReference: {fileID: 0}
     - target: {fileID: 2726281870925173909, guid: e5e8570d6b7713a4490ef458088f196e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2473,16 +2483,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5400832006488015025, guid: e5e8570d6b7713a4490ef458088f196e,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 652540186}
-    - target: {fileID: 5400832006488015025, guid: e5e8570d6b7713a4490ef458088f196e,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: resetScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5e8570d6b7713a4490ef458088f196e, type: 3}
