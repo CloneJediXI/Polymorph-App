@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else{
                 if (walking){
-                    anim.SetBool("Walk", false);
+                    //anim.SetBool("Walk", false);
                     walking = false;
                     eyeLocation.localPosition = new Vector3(eyeStart, eyeLocation.localPosition.y, eyeLocation.localPosition.z);
 
@@ -92,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButtonDown("Jump")){
                 jump();
             }
+            animateChanger();
         }
     }
     void faceRight(bool right){
@@ -112,13 +113,14 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(speed * axisData, rb.velocity.y);
         }
         eyeLocation.localPosition = new Vector3(eyeStart+eyeOfset, eyeLocation.localPosition.y, eyeLocation.localPosition.z);
-        anim.SetBool("Walk", true);
+        //anim.SetBool("Walk", true);
         walking = true;
     }
     void jump(){
         if (jumpCounter < maxJumps){
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             jumpCounter++;
+            anim.SetTrigger("Jump");
         }
     }
     void grounded()
@@ -170,7 +172,7 @@ public class PlayerMovement : MonoBehaviour
         if (toFreeze)
         {
             //rb.constraints = RigidbodyConstraints2D.FreezeAll;
-            anim.SetBool("Walk", false);
+            //anim.SetBool("Walk", false);
             walking = false;
             this.GetComponent<SpriteRenderer>().color = freezeColor;
             snowParticalsSystem.Play();
@@ -205,8 +207,17 @@ public class PlayerMovement : MonoBehaviour
     public void freeze()
     {
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        anim.SetBool("Walk", false);
+        //anim.SetBool("Walk", false);
         walking = false;
         state.Paused = true;
+    }
+
+    public void animateChanger()
+    {
+        anim.SetBool("Walk", walking);
+        anim.SetBool("Bubble", fly);
+        anim.SetBool("OnGround", onGround || tempOnground);
+        anim.SetFloat("VelocityY", rb.velocity.y);
+        anim.SetFloat("VelocityX", Mathf.Abs(rb.velocity.x));
     }
 }
