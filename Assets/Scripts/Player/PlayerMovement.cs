@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private GameObject[] bottom;
 
     private float speed = 6.5f;
-    private float sprintModifier = 4f;
+    private float sprintModifier = 0f;
 
     private Animator anim;
     private bool walking;

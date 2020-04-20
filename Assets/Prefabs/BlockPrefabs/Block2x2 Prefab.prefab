@@ -111,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.99, y: 0.99}
   m_EdgeRadius: 0
 --- !u!114 &1282163186304901478
 MonoBehaviour:
@@ -134,6 +134,7 @@ MonoBehaviour:
   frozen: 0
   freezeColor: {r: 0.64705884, g: 0.9772358, b: 1, a: 1}
   floatColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 0.7058824}
+  fly: 0
 --- !u!122 &1282163186304901477
 Halo:
   m_ObjectHideFlags: 0
@@ -188,11 +189,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1282163186304901476}
     m_Modifications:
-    - target: {fileID: 8617390866412059974, guid: 60c7f1404ad4cac479ea36ced31d1d70,
-        type: 3}
-      propertyPath: m_Name
-      value: BubbleParticalSystemBlock
-      objectReference: {fileID: 0}
     - target: {fileID: 8617390866412059995, guid: 60c7f1404ad4cac479ea36ced31d1d70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -247,6 +243,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617390866412059974, guid: 60c7f1404ad4cac479ea36ced31d1d70,
+        type: 3}
+      propertyPath: m_Name
+      value: BubbleParticalSystemBlock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60c7f1404ad4cac479ea36ced31d1d70, type: 3}
