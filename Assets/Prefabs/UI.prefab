@@ -796,7 +796,7 @@ PrefabInstance:
     - target: {fileID: 6129486220610577855, guid: d67af5a8c6351c64798c8d975781eb62,
         type: 3}
       propertyPath: m_Text
-      value: 'Arrow Keys: Movement
+      value: 'Arrow Keys or WASD: Movement
 
         E: Select gray block in range
 
@@ -834,16 +834,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8390570680144630983}
     m_Modifications:
-    - target: {fileID: 8747049770457310642, guid: 6e3df8c7bcd6fbd488c24d8d3199be8c,
-        type: 3}
-      propertyPath: m_Name
-      value: LevelComplete
-      objectReference: {fileID: 0}
-    - target: {fileID: 8747049770457310642, guid: 6e3df8c7bcd6fbd488c24d8d3199be8c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8747049770457310643, guid: 6e3df8c7bcd6fbd488c24d8d3199be8c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -897,6 +887,16 @@ PrefabInstance:
     - target: {fileID: 8747049770457310643, guid: 6e3df8c7bcd6fbd488c24d8d3199be8c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8747049770457310642, guid: 6e3df8c7bcd6fbd488c24d8d3199be8c,
+        type: 3}
+      propertyPath: m_Name
+      value: LevelComplete
+      objectReference: {fileID: 0}
+    - target: {fileID: 8747049770457310642, guid: 6e3df8c7bcd6fbd488c24d8d3199be8c,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8747049770254014022, guid: 6e3df8c7bcd6fbd488c24d8d3199be8c,
