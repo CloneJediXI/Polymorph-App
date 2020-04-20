@@ -710,6 +710,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7384072108621958517, guid: a0510c576e3a1ed41b08cea8d91012b7,
+        type: 3}
+      propertyPath: m_Mass
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 1282163186304901478, guid: a0510c576e3a1ed41b08cea8d91012b7,
         type: 3}
       propertyPath: frozen
@@ -719,11 +724,6 @@ PrefabInstance:
         type: 3}
       propertyPath: fly
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7384072108621958517, guid: a0510c576e3a1ed41b08cea8d91012b7,
-        type: 3}
-      propertyPath: m_Mass
-      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0510c576e3a1ed41b08cea8d91012b7, type: 3}
@@ -2231,6 +2231,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5400832006488015025, guid: e5e8570d6b7713a4490ef458088f196e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 197945590}
+    - target: {fileID: 5400832006488015025, guid: e5e8570d6b7713a4490ef458088f196e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: resetScene
+      objectReference: {fileID: 0}
     - target: {fileID: 2726281870925173909, guid: e5e8570d6b7713a4490ef458088f196e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2251,15 +2261,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: retry
       objectReference: {fileID: 0}
-    - target: {fileID: 5400832006488015025, guid: e5e8570d6b7713a4490ef458088f196e,
+    - target: {fileID: 118377747543004592, guid: e5e8570d6b7713a4490ef458088f196e,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 197945590}
-    - target: {fileID: 5400832006488015025, guid: e5e8570d6b7713a4490ef458088f196e,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: resetScene
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5e8570d6b7713a4490ef458088f196e, type: 3}
@@ -2782,6 +2787,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7384072108621958517, guid: a0510c576e3a1ed41b08cea8d91012b7,
+        type: 3}
+      propertyPath: m_Mass
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 1282163186304901478, guid: a0510c576e3a1ed41b08cea8d91012b7,
         type: 3}
       propertyPath: frozen
@@ -2791,11 +2801,6 @@ PrefabInstance:
         type: 3}
       propertyPath: fly
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7384072108621958517, guid: a0510c576e3a1ed41b08cea8d91012b7,
-        type: 3}
-      propertyPath: m_Mass
-      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0510c576e3a1ed41b08cea8d91012b7, type: 3}
