@@ -72,11 +72,12 @@ public class PlayerMovement : MonoBehaviour
         //If the game is not paused
         if (!state.Paused){
             //Checks if moving left or right, no difference right now but might need it later
-            if (Input.GetAxisRaw("Horizontal") > 0.0f){
+            if (Input.GetAxisRaw("Horizontal") > 0.0f && !frozen){
                 move(Input.GetButton("Fire3"), Input.GetAxisRaw("Horizontal"));
                 faceRight(true);
             }
-            else if (Input.GetAxisRaw("Horizontal") < 0.0f){
+            else if (Input.GetAxisRaw("Horizontal") < 0.0f && !frozen)
+            {
                 move(Input.GetButton("Fire3"), Input.GetAxisRaw("Horizontal"));
                 faceRight(false);
             }
@@ -89,7 +90,8 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            if (Input.GetButtonDown("Jump")){
+            if (Input.GetButtonDown("Jump") && !frozen)
+            {
                 jump();
             }
             animateChanger();
