@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ButtonMananger : MonoBehaviour
 {
+    
     public void reset()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

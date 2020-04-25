@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private float sprintModifier = 0f;
 
     private Animator anim;
-    private bool walking;
+    public bool walking;
 
     public ParticleSystem snowParticalsSystem; 
     public ParticleSystem bubbleParticalsSystem;
@@ -67,12 +67,45 @@ public class PlayerMovement : MonoBehaviour
             jumpCounter = 0;
         }
     }
+    public void move(bool right)
+    {
+        if (!state.Paused)
+        {
+            if (!frozen)
+            {
+                if (right)
+                {
+                    move(Input.GetButton("Fire3"), 1);
+                    faceRight(true);
+                }
+                else
+                {
+                    move(Input.GetButton("Fire3"), -1);
+                    faceRight(false);
+                }
+                animateChanger();
+
+            }
+
+        }
+    }
+    public void buttonJump()
+    {
+        if (!state.Paused)
+        {
+            if (!frozen)
+            {
+                jump();
+                animateChanger();
+            }
+        }
+    }
     void Update()
     {
         //If the game is not paused
         if (!state.Paused){
             //Checks if moving left or right, no difference right now but might need it later
-            if (Input.GetAxisRaw("Horizontal") > 0.0f && !frozen){
+            /*if (Input.GetAxisRaw("Horizontal") > 0.0f && !frozen){
                 move(Input.GetButton("Fire3"), Input.GetAxisRaw("Horizontal"));
                 faceRight(true);
             }
@@ -88,6 +121,11 @@ public class PlayerMovement : MonoBehaviour
                     eyeLocation.localPosition = new Vector3(eyeStart, eyeLocation.localPosition.y, eyeLocation.localPosition.z);
 
                 }
+            }*/
+            if(Mathf.Abs(rb.velocity.x)<.2)
+            {
+                walking = false;
+                eyeLocation.localPosition = new Vector3(eyeStart, eyeLocation.localPosition.y, eyeLocation.localPosition.z);
             }
 
             if (Input.GetButtonDown("Jump") && !frozen)
