@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class ShapeChange : MonoBehaviour
 {
@@ -27,8 +28,11 @@ public class ShapeChange : MonoBehaviour
     void Start()
     {
         active = (Behaviour)GetComponent("Halo");
-        active.enabled = false;
-        haloSprite.SetActive(false);
+        //active.enabled = false;
+        //haloSprite.SetActive(false);
+
+        active.enabled = true;
+        haloSprite.SetActive(true);
 
         playerObj = GameObject.FindGameObjectWithTag("Player");
         pSize = playerObj.GetComponent<PlayerSize>();
@@ -68,8 +72,20 @@ public class ShapeChange : MonoBehaviour
 		else{
 			rb.gravityScale = 1;
 		}
+        if (Vector3.Distance(Block.transform.position, playerObj.transform.position) < range)
+        {
+            active.enabled = true;
+            haloSprite.SetActive(true);
+
+        }
+        else
+        {
+            active.enabled = false;
+            haloSprite.SetActive(false);
+        }
+
     }
-    void OnMouseOver()
+    /*void OnMouseOver()
     {
         if (Vector3.Distance(Block.transform.position, playerObj.transform.position) < range)
         {
@@ -80,60 +96,66 @@ public class ShapeChange : MonoBehaviour
             }
 
         }
-    }
+    }*/
 
-    void OnMouseExit()
+    /*void OnMouseExit()
     {
         active.enabled = false;
         haloSprite.SetActive(false);
-    }
+    }*/
     void OnMouseDown()
     {
-        if (active.enabled == true && !changingSize)
+        Debug.Log("Pointer Down");
+        Debug.Log("Distance is :" + Vector3.Distance(Block.transform.position, playerObj.transform.position));
+        if (Vector3.Distance(Block.transform.position, playerObj.transform.position) < range)
         {
-            PlayerSize playerSize = playerObj.GetComponent<PlayerSize>();
-            PlayerMovement playerMovement = playerObj.GetComponent<PlayerMovement>();
-            //If the block is frozen and the player is not
-            if (frozen && !playerMovement.frozen)
+            if (active.enabled == true && !changingSize)
             {
-                //Unfreze the block and freeze the player
-                this.GetComponent<SpriteRenderer>().color = Color.white;
-                frozen = false;
-                snowParticalsSystem.Stop();
-                playerMovement.freeze(true);
-                state.swap();
-            }else if(!frozen && playerMovement.frozen)//if the block is not frozen and the player is
-            {
-                this.GetComponent<SpriteRenderer>().color = freezeColor;
-                frozen = true;
-                snowParticalsSystem.Play();
-                playerMovement.freeze(false);
-                state.swap();
+                PlayerSize playerSize = playerObj.GetComponent<PlayerSize>();
+                PlayerMovement playerMovement = playerObj.GetComponent<PlayerMovement>();
+                //If the block is frozen and the player is not
+                if (frozen && !playerMovement.frozen)
+                {
+                    //Unfreze the block and freeze the player
+                    this.GetComponent<SpriteRenderer>().color = Color.white;
+                    frozen = false;
+                    snowParticalsSystem.Stop();
+                    playerMovement.freeze(true);
+                    state.swap();
+                }
+                else if (!frozen && playerMovement.frozen)//if the block is not frozen and the player is
+                {
+                    this.GetComponent<SpriteRenderer>().color = freezeColor;
+                    frozen = true;
+                    snowParticalsSystem.Play();
+                    playerMovement.freeze(false);
+                    state.swap();
+                }
+                else if (fly && !playerMovement.fly)
+                {
+                    fly = false;
+                    bubbleParticalsSystem.Stop();
+                    this.GetComponent<SpriteRenderer>().color = Color.white;
+                    playerMovement.flight(true);
+                    state.swap();
+                }
+                else if (!fly && playerMovement.fly)
+                {
+                    fly = true;
+                    bubbleParticalsSystem.Play();
+                    this.GetComponent<SpriteRenderer>().color = floatColor;
+                    playerMovement.flight(false);
+                    state.swap();
+                }
+                else
+                {
+                    //swap size
+                    StartCoroutine(ChangeScaleOverTime(playerSize.getSize()));
+                    playerSize.changeSize(blockSize.width, blockSize.height);
+                    state.swap();
+                }
+
             }
-			else if(fly && !playerMovement.fly)
-			{
-				fly = false;
-                bubbleParticalsSystem.Stop();
-                this.GetComponent<SpriteRenderer>().color = Color.white;
-                playerMovement.flight(true);
-                state.swap();
-            }
-			else if(!fly && playerMovement.fly)
-			{
-				fly = true;
-                bubbleParticalsSystem.Play();
-                this.GetComponent<SpriteRenderer>().color = floatColor;
-                playerMovement.flight(false);
-                state.swap();
-            }
-            else
-            {
-                //swap size
-                StartCoroutine(ChangeScaleOverTime(playerSize.getSize()));
-                playerSize.changeSize(blockSize.width, blockSize.height);
-                state.swap();
-            }
-            
         }
     }
 
@@ -157,4 +179,61 @@ public class ShapeChange : MonoBehaviour
         blockSize.height = (int)transform.localScale.y;
     }
 
+    /*public void OnPointerDown(PointerEventData eventData)
+    {
+        Debug.Log("Pointer Down");
+        Debug.Log("Distance is :" + Vector3.Distance(Block.transform.position, playerObj.transform.position));
+        if (Vector3.Distance(Block.transform.position, playerObj.transform.position) < range)
+        {
+            
+            if (active.enabled == true && !changingSize)
+            {
+                PlayerSize playerSize = playerObj.GetComponent<PlayerSize>();
+                PlayerMovement playerMovement = playerObj.GetComponent<PlayerMovement>();
+                //If the block is frozen and the player is not
+                if (frozen && !playerMovement.frozen)
+                {
+                    //Unfreze the block and freeze the player
+                    this.GetComponent<SpriteRenderer>().color = Color.white;
+                    frozen = false;
+                    snowParticalsSystem.Stop();
+                    playerMovement.freeze(true);
+                    state.swap();
+                }
+                else if (!frozen && playerMovement.frozen)//if the block is not frozen and the player is
+                {
+                    this.GetComponent<SpriteRenderer>().color = freezeColor;
+                    frozen = true;
+                    snowParticalsSystem.Play();
+                    playerMovement.freeze(false);
+                    state.swap();
+                }
+                else if (fly && !playerMovement.fly)
+                {
+                    fly = false;
+                    bubbleParticalsSystem.Stop();
+                    this.GetComponent<SpriteRenderer>().color = Color.white;
+                    playerMovement.flight(true);
+                    state.swap();
+                }
+                else if (!fly && playerMovement.fly)
+                {
+                    fly = true;
+                    bubbleParticalsSystem.Play();
+                    this.GetComponent<SpriteRenderer>().color = floatColor;
+                    playerMovement.flight(false);
+                    state.swap();
+                }
+                else
+                {
+                    //swap size
+                    StartCoroutine(ChangeScaleOverTime(playerSize.getSize()));
+                    playerSize.changeSize(blockSize.width, blockSize.height);
+                    state.swap();
+                }
+
+            }
+
+        }
+    }*/
 }

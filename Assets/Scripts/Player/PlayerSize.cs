@@ -35,7 +35,7 @@ public class PlayerSize : MonoBehaviour
         line = GetComponent<LineRenderer>();
         line.positionCount = 2;
         line.enabled = false;
-        
+        interacting = true;
 
     }
 
@@ -43,7 +43,7 @@ public class PlayerSize : MonoBehaviour
     void Update()
     {
         //E is the interact key
-        if (Input.GetKeyDown("e"))
+        /*if (Input.GetKeyDown("e"))
         {
             interacting = !interacting;
         }
@@ -58,7 +58,7 @@ public class PlayerSize : MonoBehaviour
         {
             halo.enabled = false;
             line.enabled = false;
-        }
+        }*/
         //Id the game is paused, don't allow interacting
         if (state.Paused)
         {

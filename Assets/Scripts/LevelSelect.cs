@@ -16,18 +16,19 @@ public class LevelSelect : MonoBehaviour
     public Sprite goldStar;
 
     public bool mainMenu;
+
+    public GameObject holder;
     
     // Start is called before the first frame update
     void Start()
     {
         if (!mainMenu)
         {
-            GameObject canvas = GameObject.Find("Canvas");
             levels = new GameObject[numLevels];
             stars = new int[numLevels];
             for (int i = 0; i < numLevels; i++)
             {
-                levels[i] = canvas.transform.GetChild(i + 2).gameObject;
+                levels[i] = holder.transform.GetChild(i).gameObject;
             }
             read();
         }
