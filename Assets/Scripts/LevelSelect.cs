@@ -18,6 +18,9 @@ public class LevelSelect : MonoBehaviour
     public bool mainMenu;
 
     public GameObject holder;
+
+    public GameObject credits;
+    public Transform creditParent;
     
     // Start is called before the first frame update
     void Start()
@@ -45,12 +48,12 @@ public class LevelSelect : MonoBehaviour
         {
             if (PlayerPrefs.HasKey(LEVEL + i))
             {
-                Debug.Log("Has Key " + LEVEL + i);
+
                 stars[i] = PlayerPrefs.GetInt(LEVEL + i);
             }
             else
             {
-                Debug.Log("No Key " + LEVEL + i);
+
                 stars[i] = 0;
             }
         }
@@ -67,7 +70,7 @@ public class LevelSelect : MonoBehaviour
     }
     void setStars()
     {
-        Debug.Log("Processing Stars...");
+
         for (int i=0; i<stars.Length; i++)
         {
             if (stars[i] >= 1)
@@ -98,6 +101,15 @@ public class LevelSelect : MonoBehaviour
     }
     public void resetAll()
     {
-        PlayerPrefs.DeleteAll();
+        UITools tools = this.GetComponent<UITools>();
+        Func<bool> positive = () => {
+            PlayerPrefs.DeleteAll();
+            return true;
+        };
+        tools.Prompt(positive, "Are you sure you want to delete all of your game progress perminantly?");
+    }
+    public void showCredits()
+    {
+        GameObject popup = Instantiate(credits, creditParent);
     }
 }

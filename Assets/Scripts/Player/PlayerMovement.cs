@@ -37,8 +37,11 @@ public class PlayerMovement : MonoBehaviour
 
     private bool inWallRight = false;
     private bool inWallLeft = false;
-    private bool onGround;
+    public bool onGround;
     private bool tempOnground;
+
+    public bool buttonDown;
+    private float speedTemp;
 
     void Start()
     {
@@ -66,6 +69,13 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpCounter = 0;
         }
+        else if (!buttonDown && rb.velocity.x > .1)
+        {
+            Debug.Log("Slowing Down");
+            speedTemp = rb.velocity.x;
+            speedTemp = Mathf.Lerp(speedTemp, 0, .25f);
+            rb.velocity = new Vector2(speedTemp, rb.velocity.y);
+        }
     }
     public void move(bool right)
     {
@@ -89,6 +99,38 @@ public class PlayerMovement : MonoBehaviour
 
         }
     }
+    /*public void slowStop()
+    {
+        if (!state.Paused)
+        {
+            if (!frozen)
+            {
+                if (!onGround)
+                {
+                    StartCoroutine(stopProcess());
+                    
+                }
+
+            }
+
+        }
+    }
+    IEnumerator stopProcess()
+    {
+        float speed = rb.velocity.x;
+        float temp = 0;
+        while(speed > .1)
+        {
+            speed = Mathf.Lerp(speed, 0, .25f);
+            rb.velocity = new Vector2(speed, rb.velocity.y);
+            yield return new WaitForSeconds(.25f);
+            if(temp > 1000)
+            {
+                yield break;
+            }
+            temp++;
+        }
+    }*/
     public void buttonJump()
     {
         if (!state.Paused)

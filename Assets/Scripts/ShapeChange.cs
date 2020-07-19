@@ -105,8 +105,6 @@ public class ShapeChange : MonoBehaviour
     }*/
     void OnMouseDown()
     {
-        Debug.Log("Pointer Down");
-        Debug.Log("Distance is :" + Vector3.Distance(Block.transform.position, playerObj.transform.position));
         if (Vector3.Distance(Block.transform.position, playerObj.transform.position) < range)
         {
             if (active.enabled == true && !changingSize)

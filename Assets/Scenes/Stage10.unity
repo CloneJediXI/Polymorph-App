@@ -658,6 +658,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6512345593036191272, guid: 377165954436d484c991febc9c77a7a2,
+        type: 3}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 1101921223}
     - target: {fileID: 834040029, guid: 377165954436d484c991febc9c77a7a2, type: 3}
       propertyPath: parSwaps
       value: 14
@@ -2258,6 +2263,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1101921221}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1101921223 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1773148458059989770, guid: e5e8570d6b7713a4490ef458088f196e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1101921221}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1104956073 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3192732169081658673, guid: 7f922db9d0b4d5c4dba059abdb209958,

@@ -19,13 +19,21 @@ public class ButtonMovement : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         else
         {
             moving = true;
+            PM.buttonDown = true;
+            Debug.Log("Button is " + (PM.buttonDown ? "Down" : "Up"));
         }
         
+
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         moving = false;
+        if (!jump)
+        {
+            PM.buttonDown = false;
+            Debug.Log("Button is "+ (PM.buttonDown ? "Down" : "Up"));
+        }
     }
 
     void Start()

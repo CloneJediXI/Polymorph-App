@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PTop
   - PBottom
+  - Canvas
   layers:
   - Default
   - TransparentFX

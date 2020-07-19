@@ -45,7 +45,7 @@ public class Goal : MonoBehaviour
         data = overlord.GetComponent<LevelData>();
         Text parText = completionMessage.transform.GetChild(4).GetComponent<Text>();
         Text scoreText = completionMessage.transform.GetChild(5).GetComponent<Text>();
-        parText.text = "Par Score : " + data.parSwaps;
+        parText.text = "Perfect Score : " + data.parSwaps;
         scoreText.text = "Your Score : ";
         swaps = state.getSwaps();
         saveData();
